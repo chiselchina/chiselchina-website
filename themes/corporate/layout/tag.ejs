@@ -1,0 +1,12 @@
+<div class="container">
+  <ul class="breadcrumb">
+    <li><a href="/">主页</a></li>
+    <li><a href="/blog">博客</a></li>
+    <li class="active">标签: <%- page.tag %></li>
+  </ul>
+<section id="main">
+  <h1>标签: <%- page.tag %></h1>
+  <%- partial('_partial/archive', {pagination: config.tag, index: true}) %>
+</section>
+</div>
+

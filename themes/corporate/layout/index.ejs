@@ -1,0 +1,172 @@
+<div class="container-fluid flush-with-header">
+	<div class="row margin-bottom-40 row-corporate bg-light-1">
+		<div class="container">
+			<div class="col-xs-8 col-sm-6 row-corporate-text-container">
+				<div class="row-corporate-text">
+					<h1>什么是 <b class="require">Chisel</b>？</h1>
+					<h4 class="wow fadeIn">Chisel（Constructing Hardware In a Scala Embedded
+						Language）是一种嵌入在高级编程语言Scala的硬件构建语言。Chisel实际上只是一些特殊的类定义，预定义对象的集合，使用Scala的用法，所以在写Chisel程序时实际上是在写Scala程序。</h4>
+				</div>
+			</div>
+			<div class="col-xs-4 col-sm-6">
+				<img src="/chisel/assets/pages/img/frontend-slider/chip.jpg">
+			</div>
+		</div>
+	</div>
+</div>
+<div class="container">
+	<div class="row service-box margin-bottom-40">
+		<div class="col-md-4 col-sm-4">
+			<div class="service-box-heading">
+				<em><i class="fa fa-location-arrow blue wow rollIn"></i></em>
+				<span>开始学习Chisel</span>
+			</div>
+			<p>我们正在陆续整理和翻译Chisel相关的文章。在此之前，您可以从<a
+					href="https://github.com/freechipsproject/chisel-bootcamp">这里</a>开始了解并学习Chisel。</p>
+		</div>
+		<div class="col-md-4 col-sm-4">
+			<div class="service-box-heading">
+				<em><i class="fa fa-check red wow rollIn"></i></em>
+				<span>基于Chisel的项目</span>
+			</div>
+			<p>这里是一系列基于Chisel开发的<a href="/categories/项目/">项目</a>。可以借此了解Chisel的能力。</p>
+		</div>
+		<div class="col-md-4 col-sm-4">
+			<div class="service-box-heading">
+				<em><i class="fa fa-compress green wow rollIn"></i></em>
+				<span>加入Chisel中文社区</span>
+			</div>
+			<p>我们旨在建立一个开放的Chisel中文社区，通过Chisel作为起始点，进而研究学习芯片架构设计方法以及最新进展。期待您的加入！</p>
+		</div>
+	</div>
+</div>
+
+<div class="main">
+	<div class="container">
+
+		<!-- BEGIN PROJECTS -->
+		<% if (site.posts.length){ %>
+				<div class="row recent-work margin-bottom-40">
+					<div class="col-md-3">
+						<h2 class="wow fadeIn"><a href="/projects/">基于Chisel的项目</a></h2>
+						<p class="wow fadeIn">我们整理了基于Chisel开发的项目。其中有许多已经有非常多的tape out经验。值得借鉴和参考。</p>
+					</div>
+					<div class="col-md-9">
+						<div class="owl-carousel owl-carousel3">
+
+							<% site.categories.findOne({name: "项目"}).posts.filter(post => post.thumbnail).sort('title', 1).limit(6).each(function(post){  %>
+								<div class="recent-work-item">
+									<em>
+										<img src="<%= post.thumbnail %>" alt="<%= post.title || '(no title)' %>" class="img-responsive">
+										<a href="<%- url_for(post.path) %>"><i class="fa fa-link"></i></a>
+										<a href="<%= post.thumbnail %>"  class="fancybox-button" title="<% post.title %>"
+											data-rel="fancybox-button"><i class="fa fa-search"></i></a>
+									</em>
+									<a class="recent-work-description" href="<%- url_for(post.path) %>">
+										<strong><%= post.title || '(no title)' %></strong>
+										<b><%= post.author %></b>
+									</a>
+								</div>
+							<% }) %>
+							
+						</div>
+					</div>
+				</div>
+		<% } %>
+		<!-- END PROJECTS -->
+
+		<!-- BEGIN STEPS -->
+		<div class="row margin-bottom-40 front-steps-wrapper front-steps-count-3 wow
+						fadeIn">
+			<div class="col-md-4 col-sm-4 front-step-col">
+				<div class="front-step front-step1">
+					<h2>TDD和敏捷开发</h2>
+					<p>借鉴软件开发中的行之有效的方法，提高硬件代码的可靠性和效率。</p>
+				</div>
+			</div>
+			<div class="col-md-4 col-sm-4 front-step-col">
+				<div class="front-step front-step2">
+					<h2>中间语言FIRRTL</h2>
+					<p>借鉴于LLVM中间语言的想法，使得我们可以用Scala来表示并且生成硬件。</p>
+				</div>
+			</div>
+			<div class="col-md-4 col-sm-4 front-step-col">
+				<div class="front-step front-step3">
+					<h2>代码重用</h2>
+					<p>基于Scala的生成器可以让我们像软件一样复用硬件模块的代码，从而像软件一样形成一套模块库。</p>
+				</div>
+			</div>
+		</div>
+		<!-- END STEPS -->
+
+		<!-- BEGIN TABS AND TESTIMONIALS -->
+		<div class="row mix-block margin-bottom-40">
+			<!-- TABS -->
+			<div class="col-md-8 tab-style-1">
+				<ul class="nav nav-tabs">
+					<li class="active"><a href="#tab-0" data-toggle="tab">Chisel学习</a></li>
+					<li><a href="#tab-1" data-toggle="tab">Chisel项目</a></li>
+					<li><a href="#tab-2" data-toggle="tab">芯片架构设计</a></li>
+					<li><a href="#tab-3" data-toggle="tab">相关技术</a></li>
+				</ul>
+				<div class="tab-content">
+					<% ['学习', '项目', '芯片架构', '相关技术'].forEach(function(catname, i){ %>
+						<% let category = site.categories.findOne({name: catname}) %>
+						
+						<% if (category){ %> 
+							<div class="tab-pane row fade in <%= (i==0) ? 'active' : '' %>" id="tab-<%= i %>">
+								<% category.posts.filter(post => post.lede).sort('date', 1).limit(2).each(function(post){  %>
+									<div class="row">
+										<div class="col-md-3 col-sm-3">
+											<a href="<%= post.thumbnail %>" class="fancybox-button" title="%= post.title || '(no title)' %>"
+												data-rel="fancybox-button">
+												<img class="img-responsive" src="<%= post.thumbnail %>" alt="">
+											</a>
+										</div>
+										<div class="col-md-9 col-sm-9">
+											<p class="margin-bottom-10"><%= post.lede %></p>
+											<p><a class="more" href="<%- url_for(post.path) %>">阅读文章 <i class="icon-angle-right"></i></a></p>
+										</div>
+									</div>
+									<p></p>
+								<% }) %>
+							</div>
+						<% }else{ %>
+							<div class="tab-pane row fade in <%= (i==0) ? 'active' : '' %>" id="tab-<%= i %>">
+							</div>
+						<% } %> 
+					<% }) %>
+				</div>
+			</div>
+			<!-- END TABS -->
+
+			<!-- TESTIMONIALS -->
+			<div class="col-md-4 testimonials-v1">
+				<div id="myCarousel" class="carousel slide">
+					<!-- Carousel items -->
+					<div class="carousel-inner">
+						<% site.posts.filter(post => post.thumbnail).random().limit(6).each(function(post, i){ %>
+							<% if (post.thumbnail){ %> 
+								<div class="<%= (i==0) ? 'active' : '' %> item">
+									<a href="<%- url_for(post.path) %>">
+										<img class="pull-left" src="<%= post.thumbnail %>"  alt="">
+									</a>
+									<div class="pull-left">
+										<span class="testimonials-post"><%= post.title %></span>
+									</div>
+								</div>
+							<% } %>
+						<% }) %>
+					</div>
+
+					<!-- Carousel nav -->
+					<a class="left-btn" href="#myCarousel" data-slide="prev"></a>
+					<a class="right-btn" href="#myCarousel" data-slide="next"></a>
+				</div>
+			</div>
+			<!-- END TESTIMONIALS -->
+		</div>
+		<!-- END TABS AND TESTIMONIALS -->
+
+	</div>
+</div>

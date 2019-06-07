@@ -1,0 +1,39 @@
+# Header Menu
+menu:
+  主页: /
+  项目: /categories/项目/
+  博客: /archives/ # can set archive-dir in root config to custom value
+  论坛: https://www.chiselchina.com/forum
+  关于我们: /about/
+   
+rss: /atom.xml
+
+# Content
+excerpt_link: Read More
+fancybox: true # whether or not to load the fancybox library
+
+# Integrations
+disqus_shortname: chiselchina
+google_analytics:
+swiftype_install_key: 
+
+# Social
+social:
+  github: https://github.com/chiselchina/chiselchina-website
+  rss: atom.xml
+  
+# Miscellaneous
+color_scheme: red   # options: blue, gray, green, orange, red, turquoise
+favicon: /favicon.ico # path from root of hexo site
+twitter_widget_id: "678830341331820544" # as a string, from https://twitter.com/settings/widgets
+twitter_username: computerlab_ # twitter username without the @
+default_author: Anonymous
+
+about: 我们旨在建立一个开放的Chisel中文社区，通过Chisel作为起始点，进而研究学习芯片架构设计方法以及最新进展。
+phone: 
+email: admin@chiselchina.com
+address_1: 张江高科技园区
+address_2: 中国，上海
+skype: 
+lat: 40.715911 
+long: -73.962147

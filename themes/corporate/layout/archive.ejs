@@ -1,0 +1,10 @@
+<div class="container">
+  <ul class="breadcrumb">
+    <li><a href="/">主页</a></li>
+    <li class="active">博客</li>
+  </ul>
+<div id="main">
+  <h1>博客文章</h1>
+  <%- partial('_partial/archive', {pagination: config.archive, index: false}) %>
+</div>
+</div>

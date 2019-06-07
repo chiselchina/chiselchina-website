@@ -1,0 +1,42 @@
+  <!-- BEGIN PRE-FOOTER -->
+    <div class="pre-footer">
+      <div class="container">
+        <div class="row">
+          <!-- BEGIN BOTTOM ABOUT BLOCK -->
+          <div class="col-md-4 col-sm-6 pre-footer-col">
+            <h2>关于我们</h2>
+            <p><%- theme.about %></p>
+          </div>
+          <!-- END BOTTOM ABOUT BLOCK -->
+
+          <!-- BEGIN BOTTOM CONTACTS -->
+          <div class="col-md-4 col-sm-6 pre-footer-col">
+            <h2>联系方式</h2>
+            <address class="margin-bottom-40">
+              <%= theme.address_1 %><br>
+              <%= theme.address_2 %><br>
+              电话: <%= theme.phone %><br>
+              Email: <a href="mailto:<%= theme.email %>"><%= theme.email %></a><br>
+            </address>
+          </div>
+          <!-- END BOTTOM CONTACTS -->
+        </div>
+      </div>
+    </div>
+    <!-- END PRE-FOOTER -->
+
+    <!-- BEGIN FOOTER -->
+    <div class="footer">
+      <div class="container">
+        <div class="row">
+          <!-- BEGIN COPYRIGHT -->
+          <div class="col-md-6 col-sm-6 padding-top-10">
+                  &copy; <%= date(new Date(), 'YYYY') %> <%= config.title %><br>
+ <a href="javascript:;">Privacy Policy</a> | <a href="javascript:;">Terms of Service</a>
+          </div>
+          <!-- END COPYRIGHT -->
+	  <%- partial('_partial/social') %>
+        </div>
+      </div>
+    </div>
+    <!-- END FOOTER -->

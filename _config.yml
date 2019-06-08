@@ -78,4 +78,7 @@ theme: corporate
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:
-  type:
+  type: git
+  repo: git@github.com:chiselchina/chiselchina-website.git
+  branch: publish
+ 

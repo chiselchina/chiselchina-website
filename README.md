@@ -8,3 +8,13 @@
 $ npm install
 $ npm start # 开发服务器地址为 http://localhost:4000
 ```
+## 部署
+
+首先在[这里](https://github.com/settings/keys)将您的SSH公钥添加到github账号里。
+
+运行：
+```
+hexo clean
+hexo deploy
+```
+会自动生成网站并check in到`publish`分支。然后publish分支会通过webhook自动部署到web服务器。

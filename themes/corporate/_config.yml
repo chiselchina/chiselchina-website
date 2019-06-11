@@ -2,7 +2,8 @@
 menu:
   主页: /
   项目: /categories/项目/
-  博客: /archives/ # can set archive-dir in root config to custom value
+  文章: /archives/ # can set archive-dir in root config to custom value
+  博客: http://139.224.117.76/forum/category/3/%E5%8D%9A%E5%AE%A2
   技术交流: http://139.224.117.76/forum
   关于我们: /about/
    

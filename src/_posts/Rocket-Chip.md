@@ -17,11 +17,11 @@ Rocket Chip是基于Chisel开发的一款开源SoC生成器（Generator，生成
 
 Github上的repo可以在这里找到：https://github.com/freechipsproject/rocket-chip
 
-<div class="text-center">
+<div class="col-md-9 col-sm-9 small text-center">
 {% img rounded /asset/img/rocket-chip-top_800x600.jpg IMAGE-NAME %}
 
-Rocket Chip生成器包含: A) Core生成器
-B) Cache缓存生成器 C) RoCC协处理器生成器 D) Tile块生成器 E) TileLink生成器 F) 外设
+Rocket Chip生成器包含: A) Core生成器 B) Cache缓存生成器 
+C) RoCC协处理器生成器 D) Tile块生成器 E) TileLink生成器 F) 外设
 
 图片来自[Rocket Chip Tech Report](http://www2.eecs.berkeley.edu/Pubs/TechRpts/2016/EECS-2016-17.pdf)
 </div>

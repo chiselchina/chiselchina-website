@@ -12,5 +12,7 @@ lede: "在第一章中，您将学习如何编写基本的Scala代码以及如�
 featured: true
 ---
 
-<script src="http://code.jquery.com/jquery-2.0.0.js"></script>
+<div>
+<script src="/metronic/assets/plugins/jquery.min.js"></script>
 {% asset_jupyter python 1_intro_to_scala.ipynb %}
+</div>

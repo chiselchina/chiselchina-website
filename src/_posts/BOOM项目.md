@@ -18,7 +18,8 @@ BOOM是伯克利乱序执行机器（Berkeley Out-of-Order Machine）的缩写�
 Github上的位置在：[https://github.com/riscv-boom/riscv-boom](https://github.com/riscv-boom/riscv-boom)。一般通过[boom-template](https://github.com/riscv-boom/boom-template)来编译和生成SoC。
 
 <div class="small text-center">
-{% img /asset/img/boom-pipeline.svg %}
+
+![](/asset/img/boom-pipeline.svg)
 
 默认参数的BOOM流水线 (图片来自[BOOM文档](https://docs.boom-core.org/en/latest/sections/intro-overview/boom-pipeline.html))
 </div>
@@ -30,7 +31,8 @@ BOOM是一个超标量，乱序执行的核心，具有当代CPU的大部分特�
 从概念上讲，BOOM流水线分为10个阶段：指令读取（Fetch），指令解码（Decode），寄存器重命名（Register Rename），调度（Dispatch），发射（Issue），读取寄存器（Register Read），执行（Execute），内存操作（Memory），写回（Writeback）和提交（Commit）。但是，许多这些阶段在当前的实现中可以合并起来，实际上是七个阶段。
 
 <div class="small text-center">
-{% img /asset/img/boom-tile.jpg %}
+
+![](/asset/img/boom-tile.jpg)
 
 BOOM复用了Rocket Chip的SoC
 </div>

@@ -115,7 +115,7 @@
 						
 						<% if (category){ %> 
 							<div class="tab-pane row fade in <%= (i==0) ? 'active' : '' %>" id="tab-<%= i %>">
-								<% category.posts.filter(post => post.lede).sort('date', 1).limit(2).each(function(post){  %>
+								<% category.posts.filter(post => post.lede).sort('date', -1).limit(2).each(function(post){  %>
 									<div class="row">
 										<div class="col-md-3 col-sm-3">
 											<a href="<%= post.thumbnail %>" class="fancybox-button" title="%= post.title || '(no title)' %>"

@@ -15,7 +15,9 @@ fancybox: true # whether or not to load the fancybox library
 
 # Integrations
 disqus_shortname: chiselchina
-google_analytics:
+google_analytics: UA-142500911-1
+baidu_analytics: fb3ba6d260bb942d2ee9da5bc71bb823
+tencent_analytics: 
 swiftype_install_key: 
 
 # Social

@@ -81,6 +81,9 @@ sitemap:
     path: sitemap.xml
     template: ./sitemap_template.xml
 
+baidusitemap:
+    path: baidusitemap.xml
+
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
 deploy:

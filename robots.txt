@@ -1,0 +1,13 @@
+# hexo robots.txt
+User-agent: *
+Allow: /
+Allow: /archives/ 
+
+Disallow: /js/
+Disallow: /css/
+Disallow: /fonts/
+Disallow: /metronic/
+Disallow: /fancybox/
+
+Sitemap: https://www.chiselchina.com/sitemap.xml
+Sitemap: https://www.chiselchina.com/baidusitemap.xml

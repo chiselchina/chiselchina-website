@@ -6,7 +6,7 @@ category: "项目"
 author: "chiselchina"
 tags:
 - 项目
-thumbnail: http://iph.href.lu/400x300?text=BOOM&bg=EEEEEE
+thumbnail: /asset/img/boom.jpg
 lede: "BOOM是伯克利乱序执行机器（Berkeley Out-of-Order Machine）的缩写，采用Chisel硬件构造语言编写，是一款开源的，可综合，参数化的RV64GC RISC-V核心（core）的实现。"
 featured: true
 ---

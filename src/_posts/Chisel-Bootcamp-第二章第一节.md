@@ -1,13 +1,13 @@
 ---
 layout: post
-title: 第二章第一节：您的第一个Chisel模块
+title: Chisel Bootcamp 2.1：您的第一个Chisel模块
 date: 2019-06-21 16:59:18
 category: "学习"
 author: "chiselchina"
 tags:
 - Chisel学习
 - Chisel Bootcamp
-thumbnail: http://iph.href.lu/400x300?text=第一个Chisel模块&bg=EEEEEE
+thumbnail: /asset/img/module.jpg
 lede: "通过上一章的学习，您应该对Scala已经有所了解，我们可以开始来看看怎么来实现硬件。在这一节中我们会看到一个完整的Chisel模块和它的测试。"
 featured: true
 ---

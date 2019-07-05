@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Chisel Bootcamp 2.1：您的第一个Chisel模块
+title: Chisel教程 2.1：您的第一个Chisel模块
 date: 2019-06-21 16:59:18
 category: "学习"
 author: "chiselchina"

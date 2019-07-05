@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Chisel Bootcamp 1：Scala介绍
+title: Chisel教程 1：Scala介绍
 date: 2019-06-19 22:58:36
 category: "学习"
 author: "chiselchina"

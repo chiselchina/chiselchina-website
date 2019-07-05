@@ -1,6 +1,6 @@
 ---
 layout: post
-title: Chisel Bootcamp 2.2：组合逻辑
+title: Chisel教程 2.2：组合逻辑
 date: 2019-06-25 21:18:54
 category: "学习"
 author: "chiselchina"

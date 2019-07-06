@@ -59,8 +59,8 @@
 									<em>
 										<img src="<%= post.thumbnail %>" alt="<%= post.title || '(no title)' %>" class="img-responsive">
 										<a href="<%- url_for(post.path) %>"><i class="fa fa-link"></i></a>
-										<a href="<%= post.thumbnail %>"  class="fancybox-button" title="<% post.title %>"
-											data-rel="fancybox-button"><i class="fa fa-search"></i></a>
+										<!-- <a href="<%= post.thumbnail %>"  class="fancybox-button" title="<% post.title %>"
+											data-rel="fancybox-button"><i class="fa fa-search"></i></a> -->
 									</em>
 									<a class="recent-work-description" href="<%- url_for(post.path) %>">
 										<strong><%= post.title || '(no title)' %></strong>

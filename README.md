@@ -2,33 +2,38 @@
 
 该站点基于 [Hexo](https://hexo.io/) 并且基于[Corporate theme](https://github.com/ptsteadman/hexo-theme-corporate)构建而成。网站内容在 `src` 文件夹内，格式为 Markdown。欢迎 issue 或 pull request。
 
-## 开发
+# 配置开发环境
 
-``` bash
-$ npm install
-$ npm start # 开发服务器地址为 http://localhost:4000
+以下是在Windows环境下的配置，本网站使用了jupyter notebook的内容，所以需要安装[hexo-jupyter-notebook插件](https://www.npmjs.com/package/hexo-jupyter-notebook)：
+
+假设您已经安装好了`python3`。下面安装hexo和必要的python包。
+```
+npm install hexo-cli -g
+pip install nbconvert
 ```
 
-本网站使用了jupyter notebook的内容，所以需要安装[hexo-jupyter-notebook插件](https://www.npmjs.com/package/hexo-jupyter-notebook)：
+到项目根目录下执行以下命令：
+```
+npm install
+```
 
-假设您已经安装好了python3。
+# 开发
 
-第一步：
+打开hexo的配置文件 _config.yml， 确认里面的`post_asset_folder: false`改为`true`。
 
-进入自己的hexo目录，安装： `npm install hexo-jupyter-notebook --save`
+新建post：
 
+```
+hexo new <title>
+```
 
-第二步：
+## 正常的post
 
-安装pandoc: `sudo apt-get install pandoc`
+按照正常的markdown格式。图片放在文章对应的asset目录。
 
-安装nbconvert: `pip install nbconvert`
+## 基于jupyter notebook的post
 
-第三步：
-
-打开hexo的配置文件 _config.yml， 把里面的`post_asset_folder: false`改为`true`
-
-把用jupyter notebook写的内容保存为.ipynb格式的，存放到文章的asset目录中。
+将jupyter notebook写的内容保存为.ipynb格式的，存放到文章对应的asset目录中。
 
 在需要插入的展示jupyter的地方写入：
 
@@ -37,7 +42,13 @@ $ npm start # 开发服务器地址为 http://localhost:4000
 
 然后就可以在hexo文章中显示jupyter-notebook。
 
-## 部署
+# 运行
+
+```
+hexo server
+```
+
+# 部署
 
 首先在[这里](https://github.com/settings/keys)将您的SSH公钥添加到github账号里。
 

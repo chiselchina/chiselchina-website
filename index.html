@@ -249,6 +249,21 @@
 								
 									<div class="row">
 										<div class="col-md-3 col-sm-3">
+											<a href="/asset/img/generator_collections.jpg" class="fancybox-button" title="%= post.title || '(no title)' "
+												data-rel="fancybox-button">
+												<img class="img-responsive" src="/asset/img/generator_collections.jpg" alt="">
+											</a>
+										</div>
+										<div class="col-md-9 col-sm-9">
+											<p><h4>第三章第二节：生成器-容器</h4></p>
+											<p class="margin-bottom-10">生成器经常需要处理可变数量的对象，无论它们是IO，模块还是测试向量。 容器（collections）是处理此类情况的重要基础。 本模块将介绍Scala容器以及如何将它们与Chisel生成器一起使用。</p>
+											<p><a class="more" href="/2019/10/31/第三章第二节：生成器-容器/">阅读文章 <i class="icon-angle-right"></i></a></p>
+										</div>
+									</div>
+									<p></p>
+								
+									<div class="row">
+										<div class="col-md-3 col-sm-3">
 											<a href="/asset/img/generator_parameters.jpg" class="fancybox-button" title="%= post.title || '(no title)' "
 												data-rel="fancybox-button">
 												<img class="img-responsive" src="/asset/img/generator_parameters.jpg" alt="">
@@ -273,21 +288,6 @@
 											<p><h4>Chisel教程 2.6：Testers2</h4></p>
 											<p class="margin-bottom-10">Chisel团队一直在改进测试框架，新的测试框架我们称为Testers2，这一节将学习Testers2的基本功能。</p>
 											<p><a class="more" href="/2019/07/20/Chisel-Bootcamp-第二章第六节/">阅读文章 <i class="icon-angle-right"></i></a></p>
-										</div>
-									</div>
-									<p></p>
-								
-									<div class="row">
-										<div class="col-md-3 col-sm-3">
-											<a href="/asset/img/fir.jpg" class="fancybox-button" title="%= post.title || '(no title)' "
-												data-rel="fancybox-button">
-												<img class="img-responsive" src="/asset/img/fir.jpg" alt="">
-											</a>
-										</div>
-										<div class="col-md-9 col-sm-9">
-											<p><h4>Chisel教程 2.5：练习：一个有限脉冲响应（FIR）滤波器</h4></p>
-											<p class="margin-bottom-10">现在您已经学习了Chisel的基础知识，那么让我们利用这些知识来构建一个FIR（有限脉冲响应）滤波器模块！</p>
-											<p><a class="more" href="/2019/07/15/Chisel-Bootcamp-第二章第五节/">阅读文章 <i class="icon-angle-right"></i></a></p>
 										</div>
 									</div>
 									<p></p>
@@ -375,33 +375,44 @@
 						
 							 
 								<div class="active item">
-									<a href="/2019/07/01/Chisel-Bootcamp-第二章第三节/">
-										<img class="pull-left" src="/asset/img/mux.jpg"  alt="">
-									</a>
-									<div class="pull-left">
-										<span class="testimonials-post">Chisel教程 2.3：控制流</span>
-									</div>
-								</div>
-							
-						
-							 
-								<div class=" item">
-									<a href="/2019/10/25/Chisel-Bootcamp-第三章第一节/">
-										<img class="pull-left" src="/asset/img/generator_parameters.jpg"  alt="">
-									</a>
-									<div class="pull-left">
-										<span class="testimonials-post">Chisel教程 3.1：生成器-参数</span>
-									</div>
-								</div>
-							
-						
-							 
-								<div class=" item">
 									<a href="/2019/06/19/Chisel-Bootcamp-第一章/">
 										<img class="pull-left" src="/asset/img/scala.jpg"  alt="">
 									</a>
 									<div class="pull-left">
 										<span class="testimonials-post">Chisel教程 1：Scala介绍</span>
+									</div>
+								</div>
+							
+						
+							 
+								<div class=" item">
+									<a href="/2019/07/15/Chisel-Bootcamp-第二章第五节/">
+										<img class="pull-left" src="/asset/img/fir.jpg"  alt="">
+									</a>
+									<div class="pull-left">
+										<span class="testimonials-post">Chisel教程 2.5：练习：一个有限脉冲响应（FIR）滤波器</span>
+									</div>
+								</div>
+							
+						
+							 
+								<div class=" item">
+									<a href="/2019/10/31/第三章第二节：生成器-容器/">
+										<img class="pull-left" src="/asset/img/generator_collections.jpg"  alt="">
+									</a>
+									<div class="pull-left">
+										<span class="testimonials-post">第三章第二节：生成器-容器</span>
+									</div>
+								</div>
+							
+						
+							 
+								<div class=" item">
+									<a href="/2019/07/05/Chisel-Bootcamp-第二章第四节/">
+										<img class="pull-left" src="/asset/img/sequential_logic.jpg"  alt="">
+									</a>
+									<div class="pull-left">
+										<span class="testimonials-post">Chisel教程 2.4：时序逻辑</span>
 									</div>
 								</div>
 							
@@ -419,22 +430,11 @@
 						
 							 
 								<div class=" item">
-									<a href="/2019/06/25/Chisel-Bootcamp-第二章第二节/">
-										<img class="pull-left" src="/asset/img/comb_logic.jpg"  alt="">
+									<a href="/2019/07/01/Chisel-Bootcamp-第二章第三节/">
+										<img class="pull-left" src="/asset/img/mux.jpg"  alt="">
 									</a>
 									<div class="pull-left">
-										<span class="testimonials-post">Chisel教程 2.2：组合逻辑</span>
-									</div>
-								</div>
-							
-						
-							 
-								<div class=" item">
-									<a href="/2019/07/03/基于PCI的系统地址映射/">
-										<img class="pull-left" src="/asset/img/pci_system.jpg"  alt="">
-									</a>
-									<div class="pull-left">
-										<span class="testimonials-post">x86/x64架构中的系统地址映射的初始化，第1部分：基于PCI的系统</span>
+										<span class="testimonials-post">Chisel教程 2.3：控制流</span>
 									</div>
 								</div>
 							

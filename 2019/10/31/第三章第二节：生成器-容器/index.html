@@ -7,20 +7,20 @@
 <head><meta name="generator" content="Hexo 3.9.0">
   <meta charset="utf-8">
   
-  <title>Chisel教程 2.3：控制流 | Chisel 中文社区</title>
+  <title>第三章第二节：生成器-容器 | Chisel 中文社区</title>
 
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
   <meta name="keywords" content="Chisel学习,Chisel Bootcamp">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Chisel教程 2.3：控制流">
-<meta property="og:url" content="https://www.chiselchina.com/2019/07/01/Chisel-Bootcamp-第二章第三节/index.html">
+<meta property="og:title" content="第三章第二节：生成器-容器">
+<meta property="og:url" content="https://www.chiselchina.com/2019/10/31/第三章第二节：生成器-容器/index.html">
 <meta property="og:site_name" content="Chisel 中文社区">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2019-10-24T15:02:52.492Z">
+<meta property="og:updated_time" content="2019-10-31T20:50:38.375Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Chisel教程 2.3：控制流">
+<meta name="twitter:title" content="第三章第二节：生成器-容器">
   
     <link rel="alternative" href="/atom.xml" title="Chisel 中文社区" type="application/atom+xml">
   
@@ -127,13 +127,13 @@
   <section id="main">
     
     <h3 itemprop="name">
-      <a class="article-title" href="/2019/07/01/Chisel-Bootcamp-第二章第三节/">Chisel教程 2.3：控制流</a>
+      <a class="article-title" href="/2019/10/31/第三章第二节：生成器-容器/">第三章第二节：生成器-容器</a>
     </h3>
 
 
     <div class="row">
 <div class="col-md-9 col-sm-9 blog-posts">
-<article id="post-Chisel-Bootcamp-第二章第三节" class="article article-type-post blog-item" itemscope itemprop="blogPost">
+<article id="post-第三章第二节：生成器-容器" class="article article-type-post blog-item" itemscope itemprop="blogPost">
   <div class="article-meta">
   </div>
   <div class="article-inner">
@@ -143,11 +143,11 @@
       <ul class="blog-info">
 	<li><i class="fa fa-user"></i> chiselchina</li>
 	<li><i class="fa fa-calendar"></i>
-	  <time datetime="2019-07-02T05:47:47.000Z" itemprop="datePublished">2019/07/01</time>
+	  <time datetime="2019-10-31T20:42:01.000Z" itemprop="datePublished">2019/10/31</time>
 
 	</li>
 	<li class="hidden-xs"><i class="fa fa-comments"></i>
-	  <a href="https://www.chiselchina.com/2019/07/01/Chisel-Bootcamp-第二章第三节/#disqus_thread" class="article-comment-link">评论</a>
+	  <a href="https://www.chiselchina.com/2019/10/31/第三章第二节：生成器-容器/#disqus_thread" class="article-comment-link">评论</a>
 	</li>
 	<li class="hidden-xs"><i class="fa fa-tags"></i> 
 	  
@@ -182,7 +182,7 @@
 <html>
 <head><meta charset='utf-8' />
 
-<title>2.3_control_flow</title>
+<title>3.2_collections</title>
 
 <script src='https://cdnjs.cloudflare.com/ajax/libs/require.js/2.1.10/require.min.js'></script>
 <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.0.3/jquery.min.js'></script>
@@ -13257,12 +13257,9 @@ div#notebook {
 <div class='cell border-box-sizing text_cell rendered'><div class='prompt input_prompt'>
 </div><div class='inner_cell'>
 <div class='text_cell_render border-box-sizing rendered_html'>
-<h1 id='&#31532;&#20108;&#31456;&#31532;&#19977;&#33410;&#65306;&#25511;&#21046;&#27969;&#65288;Control-Flow&#65289;'>&#31532;&#20108;&#31456;&#31532;&#19977;&#33410;&#65306;&#25511;&#21046;&#27969;&#65288;Control Flow&#65289;</h1><h2 id='&#26412;&#33410;&#30340;&#30446;&#30340;'>&#26412;&#33410;&#30340;&#30446;&#30340;</h2><p>到目前为止，Chisel中的硬件实现都还能和软件对应上。
-在控制流中，硬件和软件将开始会有很大的不同。
-这一节中会介绍软件生成器中的控制流和硬件中的控制流。
-例如重新连接Chisel中的线（wire）会发生什么？
-怎样定义一个具有两个以上输入的多路复用器？
-完成这一节后，您就可以回答这些问题。</p>
+<h1 id='&#31532;&#19977;&#31456;&#31532;&#20108;&#33410;&#65306;&#29983;&#25104;&#22120;&#65306;&#23481;&#22120;'>&#31532;&#19977;&#31456;&#31532;&#20108;&#33410;&#65306;&#29983;&#25104;&#22120;&#65306;&#23481;&#22120;</h1><h2 id='&#26412;&#33410;&#30340;&#30446;&#30340;'>&#26412;&#33410;&#30340;&#30446;&#30340;</h2><p>生成器经常需要处理可变数量的对象，无论它们是IO，模块还是测试向量。
+容器（collections）是处理此类情况的重要基础。
+本模块将介绍Scala容器以及如何将它们与Chisel生成器一起使用。</p>
 <h2 id='&#35774;&#32622;'>&#35774;&#32622;</h2>
 </div>
 </div>
@@ -13281,41 +13278,26 @@ div#notebook {
 </div>
 
 </div>
+<div class='cell border-box-sizing text_cell rendered'><div class='prompt input_prompt'>
+</div><div class='inner_cell'>
+<div class='text_cell_render border-box-sizing rendered_html'>
+<p>注意，下面我们多加了一个新的导入，因为<code>mutable.ArrayBuffer</code>在<code>scala.collections</code>之中。</p>
+
+</div>
+</div>
+</div>
 <div class='cell border-box-sizing code_cell rendered'>
 <div class='input'>
-<div class='prompt input_prompt'>In&nbsp;[2]:</div>
+<div class='prompt input_prompt'>In&nbsp;[&nbsp;]:</div>
 <div class='inner_cell'>
     <div class='input_area'>
 <div class=' highlight hl-scala'><pre><span></span><span class='k'>import</span> <span class='nn'>chisel3._</span>
 <span class='k'>import</span> <span class='nn'>chisel3.util._</span>
 <span class='k'>import</span> <span class='nn'>chisel3.iotesters.</span><span class='o'>{</span><span class='nc'>ChiselFlatSpec</span><span class='o'>,</span> <span class='nc'>Driver</span><span class='o'>,</span> <span class='nc'>PeekPokeTester</span><span class='o'>}</span>
+<span class='k'>import</span> <span class='nn'>scala.collection._</span>
 </pre></div>
 
     </div>
-</div>
-</div>
-
-<div class='output_wrapper'>
-<div class='output'>
-
-
-<div class='output_area'>
-
-    <div class='prompt output_prompt'>Out[2]:</div>
-
-
-
-
-<div class='output_text output_subarea output_execute_result'>
-<pre><span class='ansi-green-fg'>import </span><span class='ansi-cyan-fg'>chisel3._
-</span>
-<span class='ansi-green-fg'>import </span><span class='ansi-cyan-fg'>chisel3.util._
-</span>
-<span class='ansi-green-fg'>import </span><span class='ansi-cyan-fg'>chisel3.iotesters.{ChiselFlatSpec, Driver, PeekPokeTester}</span></pre>
-</div>
-
-</div>
-
 </div>
 </div>
 
@@ -13324,10 +13306,10 @@ div#notebook {
 </div><div class='inner_cell'>
 <div class='text_cell_render border-box-sizing rendered_html'>
 <hr>
-<h1 id='&#26368;&#32456;&#36830;&#25509;&#30340;&#35821;&#20041;'>&#26368;&#32456;&#36830;&#25509;&#30340;&#35821;&#20041;</h1><p><span style='color:blue'>**例子：重新赋值**</span><br>
-如前所述，Chisel允许您使用<code>:=</code>运算符来连接组件。
-由于种种原因，您可以多次将信号连接到同一组件上。
-发生这种情况时，最后一个语句将会获胜。</p>
+<h1 id='&#29983;&#25104;&#22120;&#21644;&#23481;&#22120;'>&#29983;&#25104;&#22120;&#21644;&#23481;&#22120;</h1><p>在本节中，我们将重点介绍<em>生成器（generators）</em>的概念以及怎样用Scala容器来作为实现它们的工具。
+与其将Chisel代码看作是一个电路的<em>实例（instance）</em>（即特定电路的描述），
+我们在这里将其视为电路的生成器。</p>
+<p>我们将首先来看看先前练习中的FIR滤波器。</p>
 
 </div>
 </div>
@@ -13337,28 +13319,18 @@ div#notebook {
 <div class='prompt input_prompt'>In&nbsp;[3]:</div>
 <div class='inner_cell'>
     <div class='input_area'>
-<div class=' highlight hl-scala'><pre><span></span><span class='k'>class</span> <span class='nc'>LastConnect</span> <span class='k'>extends</span> <span class='nc'>Module</span> <span class='o'>{</span>
+<div class=' highlight hl-scala'><pre><span></span><span class='k'>class</span> <span class='nc'>My4ElementFir</span><span class='o'>(</span><span class='n'>b0</span><span class='k'>:</span> <span class='kt'>Int</span><span class='o'>,</span> <span class='n'>b1</span><span class='k'>:</span> <span class='kt'>Int</span><span class='o'>,</span> <span class='n'>b2</span><span class='k'>:</span> <span class='kt'>Int</span><span class='o'>,</span> <span class='n'>b3</span><span class='k'>:</span> <span class='kt'>Int</span><span class='o'>)</span> <span class='k'>extends</span> <span class='nc'>Module</span> <span class='o'>{</span>
   <span class='k'>val</span> <span class='n'>io</span> <span class='k'>=</span> <span class='nc'>IO</span><span class='o'>(</span><span class='k'>new</span> <span class='nc'>Bundle</span> <span class='o'>{</span>
-    <span class='k'>val</span> <span class='n'>in</span> <span class='k'>=</span> <span class='nc'>Input</span><span class='o'>(</span><span class='nc'>UInt</span><span class='o'>(</span><span class='mf'>4.</span><span class='n'>W</span><span class='o'>))</span>
-    <span class='k'>val</span> <span class='n'>out</span> <span class='k'>=</span> <span class='nc'>Output</span><span class='o'>(</span><span class='nc'>UInt</span><span class='o'>(</span><span class='mf'>4.</span><span class='n'>W</span><span class='o'>))</span>
+    <span class='k'>val</span> <span class='n'>in</span> <span class='k'>=</span> <span class='nc'>Input</span><span class='o'>(</span><span class='nc'>UInt</span><span class='o'>(</span><span class='mf'>8.</span><span class='n'>W</span><span class='o'>))</span>
+    <span class='k'>val</span> <span class='n'>out</span> <span class='k'>=</span> <span class='nc'>Output</span><span class='o'>(</span><span class='nc'>UInt</span><span class='o'>(</span><span class='mf'>8.</span><span class='n'>W</span><span class='o'>))</span>
   <span class='o'>})</span>
-  <span class='n'>io</span><span class='o'>.</span><span class='n'>out</span> <span class='o'>:=</span> <span class='mf'>1.</span><span class='n'>U</span>
-  <span class='n'>io</span><span class='o'>.</span><span class='n'>out</span> <span class='o'>:=</span> <span class='mf'>2.</span><span class='n'>U</span>
-  <span class='n'>io</span><span class='o'>.</span><span class='n'>out</span> <span class='o'>:=</span> <span class='mf'>3.</span><span class='n'>U</span>
-  <span class='n'>io</span><span class='o'>.</span><span class='n'>out</span> <span class='o'>:=</span> <span class='mf'>4.</span><span class='n'>U</span>
-<span class='o'>}</span>
 
-<span class='c1'>// Chisel 代码: 声明一个新的测试</span>
-<span class='k'>class</span> <span class='nc'>LastConnectTester</span><span class='o'>(</span><span class='n'>c</span><span class='k'>:</span> <span class='kt'>LastConnect</span><span class='o'>)</span> <span class='k'>extends</span> <span class='nc'>PeekPokeTester</span><span class='o'>(</span><span class='n'>c</span><span class='o'>)</span> <span class='o'>{</span>
-  <span class='n'>expect</span><span class='o'>(</span><span class='n'>c</span><span class='o'>.</span><span class='n'>io</span><span class='o'>.</span><span class='n'>out</span><span class='o'>,</span> <span class='mi'>4</span><span class='o'>)</span>  <span class='c1'>// 断言：输出将会是最后一次连接 4</span>
+  <span class='k'>val</span> <span class='n'>x_n1</span> <span class='k'>=</span> <span class='nc'>RegNext</span><span class='o'>(</span><span class='n'>io</span><span class='o'>.</span><span class='n'>in</span><span class='o'>,</span> <span class='mf'>0.</span><span class='n'>U</span><span class='o'>)</span>
+  <span class='k'>val</span> <span class='n'>x_n2</span> <span class='k'>=</span> <span class='nc'>RegNext</span><span class='o'>(</span><span class='n'>x_n1</span><span class='o'>,</span> <span class='mf'>0.</span><span class='n'>U</span><span class='o'>)</span>
+  <span class='k'>val</span> <span class='n'>x_n3</span> <span class='k'>=</span> <span class='nc'>RegNext</span><span class='o'>(</span><span class='n'>x_n2</span><span class='o'>,</span> <span class='mf'>0.</span><span class='n'>U</span><span class='o'>)</span>
+  <span class='n'>io</span><span class='o'>.</span><span class='n'>out</span> <span class='o'>:=</span> <span class='n'>io</span><span class='o'>.</span><span class='n'>in</span> <span class='o'>*</span> <span class='n'>b0</span><span class='o'>.</span><span class='n'>U</span><span class='o'>(</span><span class='mf'>8.</span><span class='n'>W</span><span class='o'>)</span> <span class='o'>+</span> <span class='n'>x_n1</span> <span class='o'>*</span> <span class='n'>b1</span><span class='o'>.</span><span class='n'>U</span><span class='o'>(</span><span class='mf'>8.</span><span class='n'>W</span><span class='o'>)</span> <span class='o'>+</span>
+    <span class='n'>x_n2</span> <span class='o'>*</span> <span class='n'>b2</span><span class='o'>.</span><span class='n'>U</span><span class='o'>(</span><span class='mf'>8.</span><span class='n'>W</span><span class='o'>)</span> <span class='o'>+</span> <span class='n'>x_n3</span> <span class='o'>*</span> <span class='n'>b3</span><span class='o'>.</span><span class='n'>U</span><span class='o'>(</span><span class='mf'>8.</span><span class='n'>W</span><span class='o'>)</span>
 <span class='o'>}</span>
-
-<span class='c1'>//  测试 LastConnect</span>
-<span class='k'>val</span> <span class='n'>works</span> <span class='k'>=</span> <span class='nc'>Driver</span><span class='o'>(()</span> <span class='k'>=&gt;</span> <span class='k'>new</span> <span class='nc'>LastConnect</span><span class='o'>)</span> <span class='o'>{</span>
-  <span class='n'>c</span> <span class='k'>=&gt;</span> <span class='k'>new</span> <span class='nc'>LastConnectTester</span><span class='o'>(</span><span class='n'>c</span><span class='o'>)</span>
-<span class='o'>}</span>
-<span class='n'>assert</span><span class='o'>(</span><span class='n'>works</span><span class='o'>)</span>        <span class='c1'>// Scala 代码: 如果 works == false 的话会抛出异常</span>
-<span class='n'>println</span><span class='o'>(</span><span class='s'>&quot;SUCCESS!!&quot;</span><span class='o'>)</span> <span class='c1'>// Scala 代码: 到这里的话表示测试通过</span>
 </pre></div>
 
     </div>
@@ -13368,26 +13340,6 @@ div#notebook {
 <div class='output_wrapper'>
 <div class='output'>
 
-
-<div class='output_area'>
-
-    <div class='prompt'></div>
-
-
-<div class='output_subarea output_stream output_stdout output_text'>
-<pre>[<span class='ansi-magenta-fg'>info</span>] [0.001] Elaborating design...
-[<span class='ansi-magenta-fg'>info</span>] [0.751] Done elaborating.
-Total FIRRTL Compile Time: 385.8 ms
-Total FIRRTL Compile Time: 14.8 ms
-End of dependency graph
-Circuit state created
-[<span class='ansi-magenta-fg'>info</span>] [0.002] SEED 1562046535998
-test cmd2HelperLastConnect Success: 1 tests passed in 5 cycles taking 0.019492 seconds
-[<span class='ansi-magenta-fg'>info</span>] [0.008] RAN 0 CYCLES PASSED
-SUCCESS!!
-</pre>
-</div>
-</div>
 
 <div class='output_area'>
 
@@ -13397,9 +13349,7 @@ SUCCESS!!
 
 
 <div class='output_text output_subarea output_execute_result'>
-<pre>defined <span class='ansi-green-fg'>class</span> <span class='ansi-cyan-fg'>LastConnect</span>
-defined <span class='ansi-green-fg'>class</span> <span class='ansi-cyan-fg'>LastConnectTester</span>
-<span class='ansi-cyan-fg'>works</span>: <span class='ansi-green-fg'>Boolean</span> = true</pre>
+<pre>defined <span class='ansi-green-fg'>class</span> <span class='ansi-cyan-fg'>My4ElementFir</span></pre>
 </div>
 
 </div>
@@ -13411,28 +13361,16 @@ defined <span class='ansi-green-fg'>class</span> <span class='ansi-cyan-fg'>Last
 <div class='cell border-box-sizing text_cell rendered'><div class='prompt input_prompt'>
 </div><div class='inner_cell'>
 <div class='text_cell_render border-box-sizing rendered_html'>
-<hr>
-<h1 id='when&#65292;elsewhen&#65292;&#21644;otherwise'><code>when</code>&#65292;<code>elsewhen</code>&#65292;&#21644;<code>otherwise</code></h1><p>Chisel中条件逻辑的主要依赖于<code>when</code>，<code>elsewhen</code>和<code>otherwise</code>结构来实现。
-类似下面这样：</p>
-<div class='highlight'><pre><span></span><span class='n'>when</span><span class='o'>(</span><span class='n'>someBooleanCondition</span><span class='o'>)</span> <span class='o'>{</span>
-  <span class='c1'>// 当someBooleanCondition条件为真时的电路</span>
-<span class='o'>}.</span><span class='n'>elsewhen</span><span class='o'>(</span><span class='n'>someOtherBooleanCondition</span><span class='o'>)</span> <span class='o'>{</span>
-  <span class='c1'>// 当someBooleanCondition条件为假，但是someOtherBooleanCondition为真时的电路</span>
-<span class='o'>}.</span><span class='n'>otherwise</span> <span class='o'>{</span>
-  <span class='c1'>// 上面所有条件都不为真时的电路</span>
-<span class='o'>}</span>
-</pre></div>
-<p><code>when</code>，<code>elsewhen</code>，和<code>otherwise</code>必须以上述顺序出现，但除<code>when</code>之外，后面两个中的任何一个都可以被省略。
-根据需要，也可以包含更多的<code>elsewhen</code>语句。
-当任何语句为真时，该构造被终止。
-在三个语句块中可以包含任何语句，甚至是嵌套包含<code>when</code>。</p>
-<p>和Scala中的<code>if</code><strong>不一样</strong>，<code>when</code>中的语句块不能返回值。
-例如下面的情况是非法的：</p>
-<div class='highlight'><pre><span></span><span class='k'>val</span> <span class='n'>result</span> <span class='k'>=</span> <span class='n'>when</span><span class='o'>(</span><span class='n'>squareIt</span><span class='o'>)</span> <span class='o'>{</span> <span class='n'>x</span> <span class='o'>*</span> <span class='n'>x</span> <span class='o'>}.</span><span class='n'>otherwise</span> <span class='o'>{</span> <span class='n'>x</span> <span class='o'>}</span>
-</pre></div>
-<p>上面的语句<strong>不能</strong>工作。我们将在<em>Wires</em>一节讨论解决方案。</p>
-<p><span style='color:blue'>**例子：Chisel的条件语句**</span><br>
-下面是一个使用了<code>when</code>语句模块<code>Module</code>的例子。</p>
+<p>该电路是生成器的一种简单的例子，因为它可以使用不同的参数来生成此4抽头（tap）滤波器的版本：
+但是，如果我们希望电路具有更多的抽头呢？我们将分几个步骤来进行：</p>
+<ul>
+<li>建立抽头（tap）数目可配置的FIR的软件的<em>黄金模型（Golden Model）</em> 。</li>
+<li>重新设计我们的测试，并确认这个新的模型它可以工作。</li>
+<li>重构我们的My4ElementFir以允许可配置的抽头数量。</li>
+<li>使用我们的新测试约束来测试新电路。</li>
+</ul>
+<p><span style='color:blue'> **示例：FIR黄金模型（Golden Model）** </span><br> 
+以下是用Scala软件实现的FIR电路。</p>
 
 </div>
 </div>
@@ -13442,44 +13380,21 @@ defined <span class='ansi-green-fg'>class</span> <span class='ansi-cyan-fg'>Last
 <div class='prompt input_prompt'>In&nbsp;[4]:</div>
 <div class='inner_cell'>
     <div class='input_area'>
-<div class=' highlight hl-scala'><pre><span></span><span class='c1'>// Max3返回三个输入中最大的一个</span>
-<span class='k'>class</span> <span class='nc'>Max3</span> <span class='k'>extends</span> <span class='nc'>Module</span> <span class='o'>{</span>
-  <span class='k'>val</span> <span class='n'>io</span> <span class='k'>=</span> <span class='nc'>IO</span><span class='o'>(</span><span class='k'>new</span> <span class='nc'>Bundle</span> <span class='o'>{</span>
-    <span class='k'>val</span> <span class='n'>in1</span> <span class='k'>=</span> <span class='nc'>Input</span><span class='o'>(</span><span class='nc'>UInt</span><span class='o'>(</span><span class='mf'>16.</span><span class='n'>W</span><span class='o'>))</span>
-    <span class='k'>val</span> <span class='n'>in2</span> <span class='k'>=</span> <span class='nc'>Input</span><span class='o'>(</span><span class='nc'>UInt</span><span class='o'>(</span><span class='mf'>16.</span><span class='n'>W</span><span class='o'>))</span>
-    <span class='k'>val</span> <span class='n'>in3</span> <span class='k'>=</span> <span class='nc'>Input</span><span class='o'>(</span><span class='nc'>UInt</span><span class='o'>(</span><span class='mf'>16.</span><span class='n'>W</span><span class='o'>))</span>
-    <span class='k'>val</span> <span class='n'>out</span> <span class='k'>=</span> <span class='nc'>Output</span><span class='o'>(</span><span class='nc'>UInt</span><span class='o'>(</span><span class='mf'>16.</span><span class='n'>W</span><span class='o'>))</span>
-  <span class='o'>})</span>
-    
-  <span class='n'>when</span><span class='o'>(</span><span class='n'>io</span><span class='o'>.</span><span class='n'>in1</span> <span class='o'>&gt;</span> <span class='n'>io</span><span class='o'>.</span><span class='n'>in2</span> <span class='o'>&amp;&amp;</span> <span class='n'>io</span><span class='o'>.</span><span class='n'>in1</span> <span class='o'>&gt;</span> <span class='n'>io</span><span class='o'>.</span><span class='n'>in3</span><span class='o'>)</span> <span class='o'>{</span>
-    <span class='n'>io</span><span class='o'>.</span><span class='n'>out</span> <span class='o'>:=</span> <span class='n'>io</span><span class='o'>.</span><span class='n'>in1</span>  
-  <span class='o'>}.</span><span class='n'>elsewhen</span><span class='o'>(</span><span class='n'>io</span><span class='o'>.</span><span class='n'>in2</span> <span class='o'>&gt;</span> <span class='n'>io</span><span class='o'>.</span><span class='n'>in1</span> <span class='o'>&amp;&amp;</span> <span class='n'>io</span><span class='o'>.</span><span class='n'>in2</span> <span class='o'>&gt;</span> <span class='n'>io</span><span class='o'>.</span><span class='n'>in3</span><span class='o'>)</span> <span class='o'>{</span>
-    <span class='n'>io</span><span class='o'>.</span><span class='n'>out</span> <span class='o'>:=</span> <span class='n'>io</span><span class='o'>.</span><span class='n'>in2</span> 
-  <span class='o'>}.</span><span class='n'>otherwise</span> <span class='o'>{</span>
-    <span class='n'>io</span><span class='o'>.</span><span class='n'>out</span> <span class='o'>:=</span> <span class='n'>io</span><span class='o'>.</span><span class='n'>in3</span>
+<div class=' highlight hl-scala'><pre><span></span><span class='cm'>/**</span>
+<span class='cm'>  * 带有任意抽头（tap）的FIR滤波器的简单实现。</span>
+<span class='cm'>  */</span>
+<span class='k'>class</span> <span class='nc'>ScalaFirFilter</span><span class='o'>(</span><span class='n'>taps</span><span class='k'>:</span> <span class='kt'>Seq</span><span class='o'>[</span><span class='kt'>Int</span><span class='o'>])</span> <span class='o'>{</span>
+  <span class='k'>var</span> <span class='n'>pseudoRegisters</span> <span class='k'>=</span> <span class='nc'>List</span><span class='o'>.</span><span class='n'>fill</span><span class='o'>(</span><span class='n'>taps</span><span class='o'>.</span><span class='n'>length</span><span class='o'>)(</span><span class='mi'>0</span><span class='o'>)</span>
+
+  <span class='k'>def</span> <span class='n'>poke</span><span class='o'>(</span><span class='n'>value</span><span class='k'>:</span> <span class='kt'>Int</span><span class='o'>)</span><span class='k'>:</span> <span class='kt'>Int</span> <span class='o'>=</span> <span class='o'>{</span>
+    <span class='n'>pseudoRegisters</span> <span class='k'>=</span> <span class='n'>value</span> <span class='o'>::</span> <span class='n'>pseudoRegisters</span><span class='o'>.</span><span class='n'>take</span><span class='o'>(</span><span class='n'>taps</span><span class='o'>.</span><span class='n'>length</span> <span class='o'>-</span> <span class='mi'>1</span><span class='o'>)</span>
+    <span class='k'>var</span> <span class='n'>accumulator</span> <span class='k'>=</span> <span class='mi'>0</span>
+    <span class='k'>for</span><span class='o'>(</span><span class='n'>i</span> <span class='k'>&lt;-</span> <span class='n'>taps</span><span class='o'>.</span><span class='n'>indices</span><span class='o'>)</span> <span class='o'>{</span>
+      <span class='n'>accumulator</span> <span class='o'>+=</span> <span class='n'>taps</span><span class='o'>(</span><span class='n'>i</span><span class='o'>)</span> <span class='o'>*</span> <span class='n'>pseudoRegisters</span><span class='o'>(</span><span class='n'>i</span><span class='o'>)</span>
+    <span class='o'>}</span>
+    <span class='n'>accumulator</span>
   <span class='o'>}</span>
 <span class='o'>}</span>
-
-<span class='c1'>// 测试正确的返回三个输入中最大的一个</span>
-<span class='k'>class</span> <span class='nc'>Max3Tester</span><span class='o'>(</span><span class='n'>c</span><span class='k'>:</span> <span class='kt'>Max3</span><span class='o'>)</span> <span class='k'>extends</span> <span class='nc'>PeekPokeTester</span><span class='o'>(</span><span class='n'>c</span><span class='o'>)</span> <span class='o'>{</span>
-  <span class='n'>poke</span><span class='o'>(</span><span class='n'>c</span><span class='o'>.</span><span class='n'>io</span><span class='o'>.</span><span class='n'>in1</span><span class='o'>,</span> <span class='mi'>6</span><span class='o'>)</span>
-  <span class='n'>poke</span><span class='o'>(</span><span class='n'>c</span><span class='o'>.</span><span class='n'>io</span><span class='o'>.</span><span class='n'>in2</span><span class='o'>,</span> <span class='mi'>4</span><span class='o'>)</span>  
-  <span class='n'>poke</span><span class='o'>(</span><span class='n'>c</span><span class='o'>.</span><span class='n'>io</span><span class='o'>.</span><span class='n'>in3</span><span class='o'>,</span> <span class='mi'>2</span><span class='o'>)</span>  
-  <span class='n'>expect</span><span class='o'>(</span><span class='n'>c</span><span class='o'>.</span><span class='n'>io</span><span class='o'>.</span><span class='n'>out</span><span class='o'>,</span> <span class='mi'>6</span><span class='o'>)</span>  <span class='c1'>// 第一个输入应该是最大的</span>
-  <span class='n'>poke</span><span class='o'>(</span><span class='n'>c</span><span class='o'>.</span><span class='n'>io</span><span class='o'>.</span><span class='n'>in2</span><span class='o'>,</span> <span class='mi'>7</span><span class='o'>)</span>  
-  <span class='n'>expect</span><span class='o'>(</span><span class='n'>c</span><span class='o'>.</span><span class='n'>io</span><span class='o'>.</span><span class='n'>out</span><span class='o'>,</span> <span class='mi'>7</span><span class='o'>)</span>  <span class='c1'>// 第二个输入应该是最大的</span>
-  <span class='n'>poke</span><span class='o'>(</span><span class='n'>c</span><span class='o'>.</span><span class='n'>io</span><span class='o'>.</span><span class='n'>in3</span><span class='o'>,</span> <span class='mi'>11</span><span class='o'>)</span>  
-  <span class='n'>expect</span><span class='o'>(</span><span class='n'>c</span><span class='o'>.</span><span class='n'>io</span><span class='o'>.</span><span class='n'>out</span><span class='o'>,</span> <span class='mi'>11</span><span class='o'>)</span> <span class='c1'>// 第三个输入应该是最大的</span>
-  <span class='n'>poke</span><span class='o'>(</span><span class='n'>c</span><span class='o'>.</span><span class='n'>io</span><span class='o'>.</span><span class='n'>in3</span><span class='o'>,</span> <span class='mi'>3</span><span class='o'>)</span>  
-  <span class='n'>expect</span><span class='o'>(</span><span class='n'>c</span><span class='o'>.</span><span class='n'>io</span><span class='o'>.</span><span class='n'>out</span><span class='o'>,</span> <span class='mi'>7</span><span class='o'>)</span>  <span class='c1'>// 测试递减序列</span>
-<span class='o'>}</span>
-
-<span class='c1'>// 测试 Max3</span>
-<span class='k'>val</span> <span class='n'>works</span> <span class='k'>=</span> <span class='nc'>Driver</span><span class='o'>(()</span> <span class='k'>=&gt;</span> <span class='k'>new</span> <span class='nc'>Max3</span><span class='o'>)</span> <span class='o'>{</span>
-  <span class='n'>c</span> <span class='k'>=&gt;</span> <span class='k'>new</span> <span class='nc'>Max3Tester</span><span class='o'>(</span><span class='n'>c</span><span class='o'>)</span>
-<span class='o'>}</span>
-<span class='n'>assert</span><span class='o'>(</span><span class='n'>works</span><span class='o'>)</span>        <span class='c1'>// Scala 代码：如果 works == false 会抛出异常</span>
-<span class='n'>println</span><span class='o'>(</span><span class='s'>&quot;SUCCESS!!&quot;</span><span class='o'>)</span> <span class='c1'>// Scala 代码：到这里测试就通过了</span>
 </pre></div>
 
     </div>
@@ -13492,35 +13407,13 @@ defined <span class='ansi-green-fg'>class</span> <span class='ansi-cyan-fg'>Last
 
 <div class='output_area'>
 
-    <div class='prompt'></div>
-
-
-<div class='output_subarea output_stream output_stdout output_text'>
-<pre>[<span class='ansi-magenta-fg'>info</span>] [0.000] Elaborating design...
-[<span class='ansi-magenta-fg'>info</span>] [0.018] Done elaborating.
-Total FIRRTL Compile Time: 57.9 ms
-Total FIRRTL Compile Time: 23.9 ms
-End of dependency graph
-Circuit state created
-[<span class='ansi-magenta-fg'>info</span>] [0.000] SEED 1562046538403
-test cmd3HelperMax3 Success: 4 tests passed in 5 cycles taking 0.013157 seconds
-[<span class='ansi-magenta-fg'>info</span>] [0.009] RAN 0 CYCLES PASSED
-SUCCESS!!
-</pre>
-</div>
-</div>
-
-<div class='output_area'>
-
     <div class='prompt output_prompt'>Out[4]:</div>
 
 
 
 
 <div class='output_text output_subarea output_execute_result'>
-<pre>defined <span class='ansi-green-fg'>class</span> <span class='ansi-cyan-fg'>Max3</span>
-defined <span class='ansi-green-fg'>class</span> <span class='ansi-cyan-fg'>Max3Tester</span>
-<span class='ansi-cyan-fg'>works</span>: <span class='ansi-green-fg'>Boolean</span> = true</pre>
+<pre>defined <span class='ansi-green-fg'>class</span> <span class='ansi-cyan-fg'>ScalaFirFilter</span></pre>
 </div>
 
 </div>
@@ -13532,14 +13425,12 @@ defined <span class='ansi-green-fg'>class</span> <span class='ansi-cyan-fg'>Max3
 <div class='cell border-box-sizing text_cell rendered'><div class='prompt input_prompt'>
 </div><div class='inner_cell'>
 <div class='text_cell_render border-box-sizing rendered_html'>
-<hr>
-<h1 id='Wire&#32467;&#26500;'><code>Wire</code>&#32467;&#26500;</h1><p>让我们回到上面<code>when</code>不返回值的限制。
-Chisel中的<code>Wire</code>结构是解决这个问题的方法之一。
-<code>Wire</code>定义了一个可以出现在语句右侧的电路器件，它也可以放在语句的左侧，之后紧跟<code>:=</code>操作符。</p>
-<p><span style='color:blue'>**例子：使用线Wire的4个输入的排序电路**</span><br></p>
-<p>为了说明这一点，我们来写一个用于排序的组合电路。它有四个输入和四个输出。如下图中所示，当左边的值小于右边的值时，数据会循着红线到下一行；而当左边的值大于右边时，数据会循着黑线，从而交换这两个值。</p>
-<p><img src='images/Sorter4.png' alt='Sort4'></p>
-<p>该图显示了一系列名称以<em>row</em>开头的单元，我们将使用<code>Wire</code>来构建这些单元，并放置上面的拷贝或交换的结果。这个代码非常冗长，但之后您会看到缩减版。</p>
+<h3 id='Seq'>Seq</h3><p>注意，<code>taps</code>已成为<code>Seq[Int]</code>，这意味着用户在构造该类时可以传递任意长的<code>Int</code>序列。</p>
+<h3 id='&#23492;&#23384;&#22120;'>&#23492;&#23384;&#22120;</h3><p>通过<code>var pseudoRegisters = List.fill(taps.length)(0)</code>，我们创建了一个列表<code>List</code>，它将保存前一个时钟周期的值。之所以选择列表<code>List</code>，是因为往其头部添加元素以及从尾部删除最后一个元素的语法非常简单。几乎任何scala容器中的类都可以使用。另外，我们还将此列表初始化为全零。</p>
+<h3 id='Poke'>Poke</h3><p>我们的类添加了一个<code>poke</code>函数/方法，该函数模拟了将新输入放入滤波器并行进一个时钟周期。</p>
+<h3 id='&#26356;&#26032;&#23492;&#23384;&#22120;'>&#26356;&#26032;&#23492;&#23384;&#22120;</h3><p><code>pseudoRegisters = value :: pseudoRegisters.take(taps.length - 1)</code>这一行首先使用列表的<code>take</code>方法取出列表中除最后一个元素之外的所有元素，然后使用<code>::</code>这个列表的连接运算符将<code>value</code>添加到列表的开头。</p>
+<h3 id='&#35745;&#31639;&#36755;&#20986;'>&#35745;&#31639;&#36755;&#20986;</h3><p>一个带有累加器的简单for循环将列表中的每个元素乘以其相应的抽头（tap）系数。仅带有<code>accumulator</code>的这一行将返回该值作为函数结果。</p>
+<h2 id='&#20462;&#25913;&#25105;&#20204;&#20043;&#21069;&#30340;&#27979;&#35797;&#29992;&#20110;&#36825;&#20010;&#40644;&#37329;&#27169;&#22411;'>&#20462;&#25913;&#25105;&#20204;&#20043;&#21069;&#30340;&#27979;&#35797;&#29992;&#20110;&#36825;&#20010;&#40644;&#37329;&#27169;&#22411;</h2><p>现在，我们将使用以前的工作来确认我们的黄金模型有效。进行一些编辑就可以将我们之前的测试方法变形为...</p>
 
 </div>
 </div>
@@ -13549,114 +13440,33 @@ Chisel中的<code>Wire</code>结构是解决这个问题的方法之一。
 <div class='prompt input_prompt'>In&nbsp;[5]:</div>
 <div class='inner_cell'>
     <div class='input_area'>
-<div class=' highlight hl-scala'><pre><span></span><span class='cm'>/** Sort4 将4个输入排序，并输出4个数 */</span>
-<span class='k'>class</span> <span class='nc'>Sort4</span> <span class='k'>extends</span> <span class='nc'>Module</span> <span class='o'>{</span>
-  <span class='k'>val</span> <span class='n'>io</span> <span class='k'>=</span> <span class='nc'>IO</span><span class='o'>(</span><span class='k'>new</span> <span class='nc'>Bundle</span> <span class='o'>{</span>
-    <span class='k'>val</span> <span class='n'>in0</span> <span class='k'>=</span> <span class='nc'>Input</span><span class='o'>(</span><span class='nc'>UInt</span><span class='o'>(</span><span class='mf'>16.</span><span class='n'>W</span><span class='o'>))</span>
-    <span class='k'>val</span> <span class='n'>in1</span> <span class='k'>=</span> <span class='nc'>Input</span><span class='o'>(</span><span class='nc'>UInt</span><span class='o'>(</span><span class='mf'>16.</span><span class='n'>W</span><span class='o'>))</span>
-    <span class='k'>val</span> <span class='n'>in2</span> <span class='k'>=</span> <span class='nc'>Input</span><span class='o'>(</span><span class='nc'>UInt</span><span class='o'>(</span><span class='mf'>16.</span><span class='n'>W</span><span class='o'>))</span>
-    <span class='k'>val</span> <span class='n'>in3</span> <span class='k'>=</span> <span class='nc'>Input</span><span class='o'>(</span><span class='nc'>UInt</span><span class='o'>(</span><span class='mf'>16.</span><span class='n'>W</span><span class='o'>))</span>
-    <span class='k'>val</span> <span class='n'>out0</span> <span class='k'>=</span> <span class='nc'>Output</span><span class='o'>(</span><span class='nc'>UInt</span><span class='o'>(</span><span class='mf'>16.</span><span class='n'>W</span><span class='o'>))</span>
-    <span class='k'>val</span> <span class='n'>out1</span> <span class='k'>=</span> <span class='nc'>Output</span><span class='o'>(</span><span class='nc'>UInt</span><span class='o'>(</span><span class='mf'>16.</span><span class='n'>W</span><span class='o'>))</span>
-    <span class='k'>val</span> <span class='n'>out2</span> <span class='k'>=</span> <span class='nc'>Output</span><span class='o'>(</span><span class='nc'>UInt</span><span class='o'>(</span><span class='mf'>16.</span><span class='n'>W</span><span class='o'>))</span>
-    <span class='k'>val</span> <span class='n'>out3</span> <span class='k'>=</span> <span class='nc'>Output</span><span class='o'>(</span><span class='nc'>UInt</span><span class='o'>(</span><span class='mf'>16.</span><span class='n'>W</span><span class='o'>))</span>
-  <span class='o'>})</span>
+<div class=' highlight hl-scala'><pre><span></span><span class='k'>val</span> <span class='n'>filter</span> <span class='k'>=</span> <span class='k'>new</span> <span class='nc'>ScalaFirFilter</span><span class='o'>(</span><span class='nc'>Seq</span><span class='o'>(</span><span class='mi'>1</span><span class='o'>,</span> <span class='mi'>1</span><span class='o'>,</span> <span class='mi'>1</span><span class='o'>,</span> <span class='mi'>1</span><span class='o'>))</span>
 
-  <span class='k'>val</span> <span class='n'>row10</span> <span class='k'>=</span> <span class='nc'>Wire</span><span class='o'>(</span><span class='nc'>UInt</span><span class='o'>(</span><span class='mf'>16.</span><span class='n'>W</span><span class='o'>))</span>
-  <span class='k'>val</span> <span class='n'>row11</span> <span class='k'>=</span> <span class='nc'>Wire</span><span class='o'>(</span><span class='nc'>UInt</span><span class='o'>(</span><span class='mf'>16.</span><span class='n'>W</span><span class='o'>))</span>
-  <span class='k'>val</span> <span class='n'>row12</span> <span class='k'>=</span> <span class='nc'>Wire</span><span class='o'>(</span><span class='nc'>UInt</span><span class='o'>(</span><span class='mf'>16.</span><span class='n'>W</span><span class='o'>))</span>
-  <span class='k'>val</span> <span class='n'>row13</span> <span class='k'>=</span> <span class='nc'>Wire</span><span class='o'>(</span><span class='nc'>UInt</span><span class='o'>(</span><span class='mf'>16.</span><span class='n'>W</span><span class='o'>))</span>
+<span class='k'>var</span> <span class='n'>out</span> <span class='k'>=</span> <span class='mi'>0</span>
 
-  <span class='n'>when</span><span class='o'>(</span><span class='n'>io</span><span class='o'>.</span><span class='n'>in0</span> <span class='o'>&lt;</span> <span class='n'>io</span><span class='o'>.</span><span class='n'>in1</span><span class='o'>)</span> <span class='o'>{</span>
-    <span class='n'>row10</span> <span class='o'>:=</span> <span class='n'>io</span><span class='o'>.</span><span class='n'>in0</span>            <span class='c1'>// 保留头两个元素</span>
-    <span class='n'>row11</span> <span class='o'>:=</span> <span class='n'>io</span><span class='o'>.</span><span class='n'>in1</span>
-  <span class='o'>}.</span><span class='n'>otherwise</span> <span class='o'>{</span>
-    <span class='n'>row10</span> <span class='o'>:=</span> <span class='n'>io</span><span class='o'>.</span><span class='n'>in1</span>            <span class='c1'>// 交换头两个元素</span>
-    <span class='n'>row11</span> <span class='o'>:=</span> <span class='n'>io</span><span class='o'>.</span><span class='n'>in0</span>
-  <span class='o'>}</span>
+<span class='n'>out</span> <span class='k'>=</span> <span class='n'>filter</span><span class='o'>.</span><span class='n'>poke</span><span class='o'>(</span><span class='mi'>1</span><span class='o'>)</span>
+<span class='n'>println</span><span class='o'>(</span><span class='s'>s&quot;out = </span><span class='si'>$out</span><span class='s'>&quot;</span><span class='o'>)</span>
+<span class='n'>assert</span><span class='o'>(</span><span class='n'>out</span> <span class='o'>==</span> <span class='mi'>1</span><span class='o'>)</span>  <span class='c1'>// 1, 0, 0, 0</span>
 
-  <span class='n'>when</span><span class='o'>(</span><span class='n'>io</span><span class='o'>.</span><span class='n'>in2</span> <span class='o'>&lt;</span> <span class='n'>io</span><span class='o'>.</span><span class='n'>in3</span><span class='o'>)</span> <span class='o'>{</span>
-    <span class='n'>row12</span> <span class='o'>:=</span> <span class='n'>io</span><span class='o'>.</span><span class='n'>in2</span>            <span class='c1'>// 保留最后两个元素</span>
-    <span class='n'>row13</span> <span class='o'>:=</span> <span class='n'>io</span><span class='o'>.</span><span class='n'>in3</span>
-  <span class='o'>}.</span><span class='n'>otherwise</span> <span class='o'>{</span>
-    <span class='n'>row12</span> <span class='o'>:=</span> <span class='n'>io</span><span class='o'>.</span><span class='n'>in3</span>            <span class='c1'>// 交换最后两个元素</span>
-    <span class='n'>row13</span> <span class='o'>:=</span> <span class='n'>io</span><span class='o'>.</span><span class='n'>in2</span>
-  <span class='o'>}</span>
+<span class='n'>out</span> <span class='k'>=</span> <span class='n'>filter</span><span class='o'>.</span><span class='n'>poke</span><span class='o'>(</span><span class='mi'>4</span><span class='o'>)</span>
+<span class='n'>assert</span><span class='o'>(</span><span class='n'>out</span> <span class='o'>==</span> <span class='mi'>5</span><span class='o'>)</span>  <span class='c1'>// 4, 1, 0, 0</span>
+<span class='n'>println</span><span class='o'>(</span><span class='s'>s&quot;out = </span><span class='si'>$out</span><span class='s'>&quot;</span><span class='o'>)</span>
 
-  <span class='k'>val</span> <span class='n'>row21</span> <span class='k'>=</span> <span class='nc'>Wire</span><span class='o'>(</span><span class='nc'>UInt</span><span class='o'>(</span><span class='mf'>16.</span><span class='n'>W</span><span class='o'>))</span>
-  <span class='k'>val</span> <span class='n'>row22</span> <span class='k'>=</span> <span class='nc'>Wire</span><span class='o'>(</span><span class='nc'>UInt</span><span class='o'>(</span><span class='mf'>16.</span><span class='n'>W</span><span class='o'>))</span>
+<span class='n'>out</span> <span class='k'>=</span> <span class='n'>filter</span><span class='o'>.</span><span class='n'>poke</span><span class='o'>(</span><span class='mi'>3</span><span class='o'>)</span>
+<span class='n'>assert</span><span class='o'>(</span><span class='n'>out</span> <span class='o'>==</span> <span class='mi'>8</span><span class='o'>)</span>  <span class='c1'>// 3, 4, 1, 0</span>
+<span class='n'>println</span><span class='o'>(</span><span class='s'>s&quot;out = </span><span class='si'>$out</span><span class='s'>&quot;</span><span class='o'>)</span>
 
-  <span class='n'>when</span><span class='o'>(</span><span class='n'>row11</span> <span class='o'>&lt;</span> <span class='n'>row12</span><span class='o'>)</span> <span class='o'>{</span>
-    <span class='n'>row21</span> <span class='o'>:=</span> <span class='n'>row11</span>            <span class='c1'>// 保留中间两个元素</span>
-    <span class='n'>row22</span> <span class='o'>:=</span> <span class='n'>row12</span>
-  <span class='o'>}.</span><span class='n'>otherwise</span> <span class='o'>{</span>
-    <span class='n'>row21</span> <span class='o'>:=</span> <span class='n'>row12</span>            <span class='c1'>// 交换中间两个元素</span>
-    <span class='n'>row22</span> <span class='o'>:=</span> <span class='n'>row11</span>
-  <span class='o'>}</span>
+<span class='n'>out</span> <span class='k'>=</span> <span class='n'>filter</span><span class='o'>.</span><span class='n'>poke</span><span class='o'>(</span><span class='mi'>2</span><span class='o'>)</span>
+<span class='n'>assert</span><span class='o'>(</span><span class='n'>out</span> <span class='o'>==</span> <span class='mi'>10</span><span class='o'>)</span>  <span class='c1'>// 2, 3, 4, 1</span>
+<span class='n'>println</span><span class='o'>(</span><span class='s'>s&quot;out = </span><span class='si'>$out</span><span class='s'>&quot;</span><span class='o'>)</span>
 
-  <span class='k'>val</span> <span class='n'>row20</span> <span class='k'>=</span> <span class='nc'>Wire</span><span class='o'>(</span><span class='nc'>UInt</span><span class='o'>(</span><span class='mf'>16.</span><span class='n'>W</span><span class='o'>))</span>
-  <span class='k'>val</span> <span class='n'>row23</span> <span class='k'>=</span> <span class='nc'>Wire</span><span class='o'>(</span><span class='nc'>UInt</span><span class='o'>(</span><span class='mf'>16.</span><span class='n'>W</span><span class='o'>))</span>
-  <span class='n'>when</span><span class='o'>(</span><span class='n'>row10</span> <span class='o'>&lt;</span> <span class='n'>row13</span><span class='o'>)</span> <span class='o'>{</span>
-    <span class='n'>row20</span> <span class='o'>:=</span> <span class='n'>row10</span>            <span class='c1'>// 保留中间两个元素</span>
-    <span class='n'>row23</span> <span class='o'>:=</span> <span class='n'>row13</span>
-  <span class='o'>}.</span><span class='n'>otherwise</span> <span class='o'>{</span>
-    <span class='n'>row20</span> <span class='o'>:=</span> <span class='n'>row13</span>            <span class='c1'>// 交换中间两个元素</span>
-    <span class='n'>row23</span> <span class='o'>:=</span> <span class='n'>row10</span>
-  <span class='o'>}</span>
+<span class='n'>out</span> <span class='k'>=</span> <span class='n'>filter</span><span class='o'>.</span><span class='n'>poke</span><span class='o'>(</span><span class='mi'>7</span><span class='o'>)</span>
+<span class='n'>assert</span><span class='o'>(</span><span class='n'>out</span> <span class='o'>==</span> <span class='mi'>16</span><span class='o'>)</span>  <span class='c1'>// 7, 2, 3, 4</span>
+<span class='n'>println</span><span class='o'>(</span><span class='s'>s&quot;out = </span><span class='si'>$out</span><span class='s'>&quot;</span><span class='o'>)</span>
 
-  <span class='n'>when</span><span class='o'>(</span><span class='n'>row20</span> <span class='o'>&lt;</span> <span class='n'>row21</span><span class='o'>)</span> <span class='o'>{</span>
-    <span class='n'>io</span><span class='o'>.</span><span class='n'>out0</span> <span class='o'>:=</span> <span class='n'>row20</span>            <span class='c1'>// 保留头两个元素</span>
-    <span class='n'>io</span><span class='o'>.</span><span class='n'>out1</span> <span class='o'>:=</span> <span class='n'>row21</span>
-  <span class='o'>}.</span><span class='n'>otherwise</span> <span class='o'>{</span>
-    <span class='n'>io</span><span class='o'>.</span><span class='n'>out0</span> <span class='o'>:=</span> <span class='n'>row21</span>            <span class='c1'>// 交换头两个元素</span>
-    <span class='n'>io</span><span class='o'>.</span><span class='n'>out1</span> <span class='o'>:=</span> <span class='n'>row20</span>
-  <span class='o'>}</span>
-
-  <span class='n'>when</span><span class='o'>(</span><span class='n'>row22</span> <span class='o'>&lt;</span> <span class='n'>row23</span><span class='o'>)</span> <span class='o'>{</span>
-    <span class='n'>io</span><span class='o'>.</span><span class='n'>out2</span> <span class='o'>:=</span> <span class='n'>row22</span>            <span class='c1'>// 保留头两个元素</span>
-    <span class='n'>io</span><span class='o'>.</span><span class='n'>out3</span> <span class='o'>:=</span> <span class='n'>row23</span>
-  <span class='o'>}.</span><span class='n'>otherwise</span> <span class='o'>{</span>
-    <span class='n'>io</span><span class='o'>.</span><span class='n'>out2</span> <span class='o'>:=</span> <span class='n'>row23</span>            <span class='c1'>// 交换头两个元素</span>
-    <span class='n'>io</span><span class='o'>.</span><span class='n'>out3</span> <span class='o'>:=</span> <span class='n'>row22</span>
-  <span class='o'>}</span>
-<span class='o'>}</span>
-
-<span class='c1'>// 检查输入被正确的排序</span>
-<span class='k'>class</span> <span class='nc'>Sort4Tester</span><span class='o'>(</span><span class='n'>c</span><span class='k'>:</span> <span class='kt'>Sort4</span><span class='o'>)</span> <span class='k'>extends</span> <span class='nc'>PeekPokeTester</span><span class='o'>(</span><span class='n'>c</span><span class='o'>)</span> <span class='o'>{</span>
-  <span class='n'>poke</span><span class='o'>(</span><span class='n'>c</span><span class='o'>.</span><span class='n'>io</span><span class='o'>.</span><span class='n'>in0</span><span class='o'>,</span> <span class='mi'>3</span><span class='o'>)</span>
-  <span class='n'>poke</span><span class='o'>(</span><span class='n'>c</span><span class='o'>.</span><span class='n'>io</span><span class='o'>.</span><span class='n'>in1</span><span class='o'>,</span> <span class='mi'>6</span><span class='o'>)</span>
-  <span class='n'>poke</span><span class='o'>(</span><span class='n'>c</span><span class='o'>.</span><span class='n'>io</span><span class='o'>.</span><span class='n'>in2</span><span class='o'>,</span> <span class='mi'>9</span><span class='o'>)</span>
-  <span class='n'>poke</span><span class='o'>(</span><span class='n'>c</span><span class='o'>.</span><span class='n'>io</span><span class='o'>.</span><span class='n'>in3</span><span class='o'>,</span> <span class='mi'>12</span><span class='o'>)</span>
-  <span class='n'>expect</span><span class='o'>(</span><span class='n'>c</span><span class='o'>.</span><span class='n'>io</span><span class='o'>.</span><span class='n'>out0</span><span class='o'>,</span> <span class='mi'>3</span><span class='o'>)</span>
-  <span class='n'>expect</span><span class='o'>(</span><span class='n'>c</span><span class='o'>.</span><span class='n'>io</span><span class='o'>.</span><span class='n'>out1</span><span class='o'>,</span> <span class='mi'>6</span><span class='o'>)</span>
-  <span class='n'>expect</span><span class='o'>(</span><span class='n'>c</span><span class='o'>.</span><span class='n'>io</span><span class='o'>.</span><span class='n'>out2</span><span class='o'>,</span> <span class='mi'>9</span><span class='o'>)</span>
-  <span class='n'>expect</span><span class='o'>(</span><span class='n'>c</span><span class='o'>.</span><span class='n'>io</span><span class='o'>.</span><span class='n'>out3</span><span class='o'>,</span> <span class='mi'>12</span><span class='o'>)</span>
-
-  <span class='n'>poke</span><span class='o'>(</span><span class='n'>c</span><span class='o'>.</span><span class='n'>io</span><span class='o'>.</span><span class='n'>in0</span><span class='o'>,</span> <span class='mi'>13</span><span class='o'>)</span>
-  <span class='n'>poke</span><span class='o'>(</span><span class='n'>c</span><span class='o'>.</span><span class='n'>io</span><span class='o'>.</span><span class='n'>in1</span><span class='o'>,</span> <span class='mi'>4</span><span class='o'>)</span>
-  <span class='n'>poke</span><span class='o'>(</span><span class='n'>c</span><span class='o'>.</span><span class='n'>io</span><span class='o'>.</span><span class='n'>in2</span><span class='o'>,</span> <span class='mi'>6</span><span class='o'>)</span>
-  <span class='n'>poke</span><span class='o'>(</span><span class='n'>c</span><span class='o'>.</span><span class='n'>io</span><span class='o'>.</span><span class='n'>in3</span><span class='o'>,</span> <span class='mi'>1</span><span class='o'>)</span>
-  <span class='n'>expect</span><span class='o'>(</span><span class='n'>c</span><span class='o'>.</span><span class='n'>io</span><span class='o'>.</span><span class='n'>out0</span><span class='o'>,</span> <span class='mi'>1</span><span class='o'>)</span>
-  <span class='n'>expect</span><span class='o'>(</span><span class='n'>c</span><span class='o'>.</span><span class='n'>io</span><span class='o'>.</span><span class='n'>out1</span><span class='o'>,</span> <span class='mi'>4</span><span class='o'>)</span>
-  <span class='n'>expect</span><span class='o'>(</span><span class='n'>c</span><span class='o'>.</span><span class='n'>io</span><span class='o'>.</span><span class='n'>out2</span><span class='o'>,</span> <span class='mi'>6</span><span class='o'>)</span>
-  <span class='n'>expect</span><span class='o'>(</span><span class='n'>c</span><span class='o'>.</span><span class='n'>io</span><span class='o'>.</span><span class='n'>out3</span><span class='o'>,</span> <span class='mi'>13</span><span class='o'>)</span>
-    
-  <span class='n'>poke</span><span class='o'>(</span><span class='n'>c</span><span class='o'>.</span><span class='n'>io</span><span class='o'>.</span><span class='n'>in0</span><span class='o'>,</span> <span class='mi'>13</span><span class='o'>)</span>
-  <span class='n'>poke</span><span class='o'>(</span><span class='n'>c</span><span class='o'>.</span><span class='n'>io</span><span class='o'>.</span><span class='n'>in1</span><span class='o'>,</span> <span class='mi'>6</span><span class='o'>)</span>
-  <span class='n'>poke</span><span class='o'>(</span><span class='n'>c</span><span class='o'>.</span><span class='n'>io</span><span class='o'>.</span><span class='n'>in2</span><span class='o'>,</span> <span class='mi'>4</span><span class='o'>)</span>
-  <span class='n'>poke</span><span class='o'>(</span><span class='n'>c</span><span class='o'>.</span><span class='n'>io</span><span class='o'>.</span><span class='n'>in3</span><span class='o'>,</span> <span class='mi'>1</span><span class='o'>)</span>
-  <span class='n'>expect</span><span class='o'>(</span><span class='n'>c</span><span class='o'>.</span><span class='n'>io</span><span class='o'>.</span><span class='n'>out0</span><span class='o'>,</span> <span class='mi'>1</span><span class='o'>)</span>
-  <span class='n'>expect</span><span class='o'>(</span><span class='n'>c</span><span class='o'>.</span><span class='n'>io</span><span class='o'>.</span><span class='n'>out1</span><span class='o'>,</span> <span class='mi'>4</span><span class='o'>)</span>
-  <span class='n'>expect</span><span class='o'>(</span><span class='n'>c</span><span class='o'>.</span><span class='n'>io</span><span class='o'>.</span><span class='n'>out2</span><span class='o'>,</span> <span class='mi'>6</span><span class='o'>)</span>
-  <span class='n'>expect</span><span class='o'>(</span><span class='n'>c</span><span class='o'>.</span><span class='n'>io</span><span class='o'>.</span><span class='n'>out3</span><span class='o'>,</span> <span class='mi'>13</span><span class='o'>)</span>
-<span class='o'>}</span>
-
-<span class='c1'>// 测试</span>
-<span class='k'>val</span> <span class='n'>works</span> <span class='k'>=</span> <span class='n'>iotesters</span><span class='o'>.</span><span class='nc'>Driver</span><span class='o'>(()</span> <span class='k'>=&gt;</span> <span class='k'>new</span> <span class='nc'>Sort4</span><span class='o'>)</span> <span class='o'>{</span>
-<span class='n'>c</span> <span class='k'>=&gt;</span> <span class='k'>new</span> <span class='nc'>Sort4Tester</span><span class='o'>(</span><span class='n'>c</span><span class='o'>)</span>
-<span class='o'>}</span>
-<span class='n'>assert</span><span class='o'>(</span><span class='n'>works</span><span class='o'>)</span> <span class='c1'>// Scala 代码：如果 works == false，这里会抛出异常</span>
-<span class='n'>println</span><span class='o'>(</span><span class='s'>&quot;SUCCESS!!&quot;</span><span class='o'>)</span> <span class='c1'>// Scala 代码：到这里测试就通过了</span>
+<span class='n'>out</span> <span class='k'>=</span> <span class='n'>filter</span><span class='o'>.</span><span class='n'>poke</span><span class='o'>(</span><span class='mi'>0</span><span class='o'>)</span>
+<span class='n'>assert</span><span class='o'>(</span><span class='n'>out</span> <span class='o'>==</span> <span class='mi'>12</span><span class='o'>)</span>  <span class='c1'>// 0, 7, 2, 3</span>
+<span class='n'>println</span><span class='o'>(</span><span class='s'>s&quot;out = </span><span class='si'>$out</span><span class='s'>&quot;</span><span class='o'>)</span>
 </pre></div>
 
     </div>
@@ -13673,16 +13483,12 @@ Chisel中的<code>Wire</code>结构是解决这个问题的方法之一。
 
 
 <div class='output_subarea output_stream output_stdout output_text'>
-<pre>[<span class='ansi-magenta-fg'>info</span>] [0.000] Elaborating design...
-[<span class='ansi-magenta-fg'>info</span>] [0.018] Done elaborating.
-Total FIRRTL Compile Time: 85.6 ms
-Total FIRRTL Compile Time: 36.6 ms
-End of dependency graph
-Circuit state created
-[<span class='ansi-magenta-fg'>info</span>] [0.000] SEED 1562046539525
-test cmd4HelperSort4 Success: 12 tests passed in 5 cycles taking 0.020994 seconds
-[<span class='ansi-magenta-fg'>info</span>] [0.015] RAN 0 CYCLES PASSED
-SUCCESS!!
+<pre>out = 1
+out = 5
+out = 8
+out = 10
+out = 16
+out = 12
 </pre>
 </div>
 </div>
@@ -13695,9 +13501,8 @@ SUCCESS!!
 
 
 <div class='output_text output_subarea output_execute_result'>
-<pre>defined <span class='ansi-green-fg'>class</span> <span class='ansi-cyan-fg'>Sort4</span>
-defined <span class='ansi-green-fg'>class</span> <span class='ansi-cyan-fg'>Sort4Tester</span>
-<span class='ansi-cyan-fg'>works</span>: <span class='ansi-green-fg'>Boolean</span> = true</pre>
+<pre><span class='ansi-cyan-fg'>filter</span>: <span class='ansi-green-fg'>ScalaFirFilter</span> = ammonite.$sess.cmd3$Helper$ScalaFirFilter@44efb28a
+<span class='ansi-cyan-fg'>out</span>: <span class='ansi-green-fg'>Int</span> = <span class='ansi-green-fg'>12</span></pre>
 </div>
 
 </div>
@@ -13709,7 +13514,16 @@ defined <span class='ansi-green-fg'>class</span> <span class='ansi-cyan-fg'>Sort
 <div class='cell border-box-sizing text_cell rendered'><div class='prompt input_prompt'>
 </div><div class='inner_cell'>
 <div class='text_cell_render border-box-sizing rendered_html'>
-<p>下面是一个更详尽的测试，使用了Scala的<code>List</code>功能。您可以在之后的模块中看到更多<code>List</code>的函数。</p>
+<p>执行前面的代码表明，我们的软件模型返回的结果与之前的<code>My4ElementFir</code>相同。</p>
+
+</div>
+</div>
+</div>
+<div class='cell border-box-sizing text_cell rendered'><div class='prompt input_prompt'>
+</div><div class='inner_cell'>
+<div class='text_cell_render border-box-sizing rendered_html'>
+<h2 id='&#20351;&#29992;&#40644;&#37329;&#27169;&#22411;&#65288;golden-model&#65289;&#26469;&#27979;&#35797;&#30005;&#36335;&#12290;'>&#20351;&#29992;&#40644;&#37329;&#27169;&#22411;&#65288;golden model&#65289;&#26469;&#27979;&#35797;&#30005;&#36335;&#12290;</h2><p>既然我们对黄金模型有足够的信心，我们就可以重写测试从而将电路输出与黄金模型的输出进行比较，而不必使用费力的手工生成的测试用例。
+接下来是快速实现的第一步。</p>
 
 </div>
 </div>
@@ -13719,27 +13533,201 @@ defined <span class='ansi-green-fg'>class</span> <span class='ansi-cyan-fg'>Sort
 <div class='prompt input_prompt'>In&nbsp;[6]:</div>
 <div class='inner_cell'>
     <div class='input_area'>
-<div class=' highlight hl-scala'><pre><span></span><span class='c1'>// 检查四个数的所有排列组合的排序</span>
-<span class='k'>class</span> <span class='nc'>BetterSort4Tester</span><span class='o'>(</span><span class='n'>c</span><span class='k'>:</span> <span class='kt'>Sort4</span><span class='o'>)</span> <span class='k'>extends</span> <span class='nc'>PeekPokeTester</span><span class='o'>(</span><span class='n'>c</span><span class='o'>)</span> <span class='o'>{</span>
-  <span class='nc'>List</span><span class='o'>(</span><span class='mi'>1</span><span class='o'>,</span> <span class='mi'>2</span><span class='o'>,</span> <span class='mi'>3</span><span class='o'>,</span> <span class='mi'>4</span><span class='o'>).</span><span class='n'>permutations</span><span class='o'>.</span><span class='n'>foreach</span> <span class='o'>{</span> <span class='k'>case</span> <span class='n'>i0</span> <span class='o'>::</span> <span class='n'>i1</span> <span class='o'>::</span> <span class='n'>i2</span> <span class='o'>::</span> <span class='n'>i3</span> <span class='o'>::</span> <span class='nc'>Nil</span> <span class='k'>=&gt;</span>
-    <span class='n'>println</span><span class='o'>(</span><span class='s'>s&quot;Sorting </span><span class='si'>$i0</span><span class='s'> </span><span class='si'>$i1</span><span class='s'> </span><span class='si'>$i2</span><span class='s'> </span><span class='si'>$i3</span><span class='s'>&quot;</span><span class='o'>)</span>
-    <span class='n'>poke</span><span class='o'>(</span><span class='n'>c</span><span class='o'>.</span><span class='n'>io</span><span class='o'>.</span><span class='n'>in0</span><span class='o'>,</span> <span class='n'>i0</span><span class='o'>)</span>
-    <span class='n'>poke</span><span class='o'>(</span><span class='n'>c</span><span class='o'>.</span><span class='n'>io</span><span class='o'>.</span><span class='n'>in1</span><span class='o'>,</span> <span class='n'>i1</span><span class='o'>)</span>
-    <span class='n'>poke</span><span class='o'>(</span><span class='n'>c</span><span class='o'>.</span><span class='n'>io</span><span class='o'>.</span><span class='n'>in2</span><span class='o'>,</span> <span class='n'>i2</span><span class='o'>)</span>
-    <span class='n'>poke</span><span class='o'>(</span><span class='n'>c</span><span class='o'>.</span><span class='n'>io</span><span class='o'>.</span><span class='n'>in3</span><span class='o'>,</span> <span class='n'>i3</span><span class='o'>)</span>
-    <span class='n'>expect</span><span class='o'>(</span><span class='n'>c</span><span class='o'>.</span><span class='n'>io</span><span class='o'>.</span><span class='n'>out0</span><span class='o'>,</span> <span class='mi'>1</span><span class='o'>)</span>
-    <span class='n'>expect</span><span class='o'>(</span><span class='n'>c</span><span class='o'>.</span><span class='n'>io</span><span class='o'>.</span><span class='n'>out1</span><span class='o'>,</span> <span class='mi'>2</span><span class='o'>)</span>
-    <span class='n'>expect</span><span class='o'>(</span><span class='n'>c</span><span class='o'>.</span><span class='n'>io</span><span class='o'>.</span><span class='n'>out2</span><span class='o'>,</span> <span class='mi'>3</span><span class='o'>)</span>
-    <span class='n'>expect</span><span class='o'>(</span><span class='n'>c</span><span class='o'>.</span><span class='n'>io</span><span class='o'>.</span><span class='n'>out3</span><span class='o'>,</span> <span class='mi'>4</span><span class='o'>)</span>
+<div class=' highlight hl-scala'><pre><span></span><span class='k'>val</span> <span class='n'>goldenModel</span> <span class='k'>=</span> <span class='k'>new</span> <span class='nc'>ScalaFirFilter</span><span class='o'>(</span><span class='nc'>Seq</span><span class='o'>(</span><span class='mi'>1</span><span class='o'>,</span> <span class='mi'>1</span><span class='o'>,</span> <span class='mi'>1</span><span class='o'>,</span> <span class='mi'>1</span><span class='o'>))</span>
+
+<span class='nc'>Driver</span><span class='o'>(()</span> <span class='k'>=&gt;</span> <span class='k'>new</span> <span class='nc'>My4ElementFir</span><span class='o'>(</span><span class='mi'>1</span><span class='o'>,</span> <span class='mi'>1</span><span class='o'>,</span> <span class='mi'>1</span><span class='o'>,</span> <span class='mi'>1</span><span class='o'>))</span> <span class='o'>{</span>
+  <span class='n'>c</span> <span class='k'>=&gt;</span> <span class='k'>new</span> <span class='nc'>PeekPokeTester</span><span class='o'>(</span><span class='n'>c</span><span class='o'>)</span> <span class='o'>{</span>
+    <span class='k'>for</span><span class='o'>(</span><span class='n'>i</span> <span class='k'>&lt;-</span> <span class='mi'>0</span> <span class='n'>until</span> <span class='mi'>100</span><span class='o'>)</span> <span class='o'>{</span>
+      <span class='k'>val</span> <span class='n'>input</span> <span class='k'>=</span> <span class='n'>scala</span><span class='o'>.</span><span class='n'>util</span><span class='o'>.</span><span class='nc'>Random</span><span class='o'>.</span><span class='n'>nextInt</span><span class='o'>(</span><span class='mi'>8</span><span class='o'>)</span>
+
+      <span class='k'>val</span> <span class='n'>goldenModelResult</span> <span class='k'>=</span> <span class='n'>goldenModel</span><span class='o'>.</span><span class='n'>poke</span><span class='o'>(</span><span class='n'>input</span><span class='o'>)</span>
+
+      <span class='n'>poke</span><span class='o'>(</span><span class='n'>c</span><span class='o'>.</span><span class='n'>io</span><span class='o'>.</span><span class='n'>in</span><span class='o'>,</span> <span class='n'>input</span><span class='o'>)</span>
+
+      <span class='n'>expect</span><span class='o'>(</span><span class='n'>c</span><span class='o'>.</span><span class='n'>io</span><span class='o'>.</span><span class='n'>out</span><span class='o'>,</span> <span class='n'>goldenModelResult</span><span class='o'>,</span> <span class='s'>s&quot;i </span><span class='si'>$i</span><span class='s'>, input </span><span class='si'>$input</span><span class='s'>, gm </span><span class='si'>$goldenModelResult</span><span class='s'>, </span><span class='si'>${</span><span class='n'>peek</span><span class='o'>(</span><span class='n'>c</span><span class='o'>.</span><span class='n'>io</span><span class='o'>.</span><span class='n'>out</span><span class='o'>)</span><span class='si'>}</span><span class='s'>&quot;</span><span class='o'>)</span>
+
+      <span class='n'>step</span><span class='o'>(</span><span class='mi'>1</span><span class='o'>)</span>
+    <span class='o'>}</span>
   <span class='o'>}</span>
 <span class='o'>}</span>
+</pre></div>
 
-<span class='c1'>// 测试</span>
-<span class='k'>val</span> <span class='n'>works</span> <span class='k'>=</span> <span class='n'>iotesters</span><span class='o'>.</span><span class='nc'>Driver</span><span class='o'>(()</span> <span class='k'>=&gt;</span> <span class='k'>new</span> <span class='nc'>Sort4</span><span class='o'>)</span> <span class='o'>{</span>
-<span class='n'>c</span> <span class='k'>=&gt;</span> <span class='k'>new</span> <span class='nc'>BetterSort4Tester</span><span class='o'>(</span><span class='n'>c</span><span class='o'>)</span>
+    </div>
+</div>
+</div>
+
+<div class='output_wrapper'>
+<div class='output'>
+
+
+<div class='output_area'>
+
+    <div class='prompt'></div>
+
+
+<div class='output_subarea output_stream output_stdout output_text'>
+<pre>[<span class='ansi-magenta-fg'>info</span>] [0.004] Elaborating design...
+[<span class='ansi-magenta-fg'>info</span>] [0.969] Done elaborating.
+Total FIRRTL Compile Time: 598.5 ms
+Total FIRRTL Compile Time: 80.6 ms
+End of dependency graph
+Circuit state created
+[<span class='ansi-magenta-fg'>info</span>] [0.001] SEED 1572488622080
+test cmd2HelperMy4ElementFir Success: 100 tests passed in 105 cycles taking 0.142455 seconds
+[<span class='ansi-magenta-fg'>info</span>] [0.118] RAN 100 CYCLES PASSED
+</pre>
+</div>
+</div>
+
+<div class='output_area'>
+
+    <div class='prompt output_prompt'>Out[6]:</div>
+
+
+
+
+<div class='output_text output_subarea output_execute_result'>
+<pre><span class='ansi-cyan-fg'>goldenModel</span>: <span class='ansi-green-fg'>ScalaFirFilter</span> = ammonite.$sess.cmd3$Helper$ScalaFirFilter@b7d7ea1
+<span class='ansi-cyan-fg'>res5_1</span>: <span class='ansi-green-fg'>Boolean</span> = true</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class='cell border-box-sizing text_cell rendered'><div class='prompt input_prompt'>
+</div><div class='inner_cell'>
+<div class='text_cell_render border-box-sizing rendered_html'>
+<p>上面的测试运行100个时钟周期，并在每一步检查用两种不同的方法（硬件和软件）得到的结果是否一致。</p>
+<h3 id='&#27880;&#24847;&#20107;&#39033;'>&#27880;&#24847;&#20107;&#39033;</h3><p>（实际上是我们在撰写本文时实际犯的错误。）</p>
+<ol>
+<li>将<code>step</code>放在正确的位置。软件和硬件的执行方式不同；这很容易弄错。</li>
+<li>此测试很弱，因为它对IO和寄存器的大小非常敏感。用软件来实现任意数据宽度的环绕（wrap）行为非常复杂。在这里，我们确保只传递适合的值。</li>
+</ol>
+
+</div>
+</div>
+</div>
+<div class='cell border-box-sizing text_cell rendered'><div class='prompt input_prompt'>
+</div><div class='inner_cell'>
+<div class='text_cell_render border-box-sizing rendered_html'>
+<p><span style='color:blue'>**示例：参数化FIR生成器**</span><br> 
+在下面，我们创建了一个新的滤波器的类，即<code>MyManyElementsFilter</code>，该类接受一个常量<code>Seq</code>用于抽头。该列表可以包含任意数量的元素。
+另外，我们添加了<code>bitWidth</code>，用于控制电路可以处理的数字的大小。</p>
+<p>为了使得长度可变，我们不得不重构寄存器的创建及其连接方式。
+下面只用了所有容器的方法中的一部分。
+后面的几节将说明如何更简洁同时也更清晰地表达该行为。</p>
+
+</div>
+</div>
+</div>
+<div class='cell border-box-sizing code_cell rendered'>
+<div class='input'>
+<div class='prompt input_prompt'>In&nbsp;[7]:</div>
+<div class='inner_cell'>
+    <div class='input_area'>
+<div class=' highlight hl-scala'><pre><span></span><span class='k'>class</span> <span class='nc'>MyManyElementFir</span><span class='o'>(</span><span class='n'>consts</span><span class='k'>:</span> <span class='kt'>Seq</span><span class='o'>[</span><span class='kt'>Int</span><span class='o'>],</span> <span class='n'>bitWidth</span><span class='k'>:</span> <span class='kt'>Int</span><span class='o'>)</span> <span class='k'>extends</span> <span class='nc'>Module</span> <span class='o'>{</span>
+  <span class='k'>val</span> <span class='n'>io</span> <span class='k'>=</span> <span class='nc'>IO</span><span class='o'>(</span><span class='k'>new</span> <span class='nc'>Bundle</span> <span class='o'>{</span>
+    <span class='k'>val</span> <span class='n'>in</span> <span class='k'>=</span> <span class='nc'>Input</span><span class='o'>(</span><span class='nc'>UInt</span><span class='o'>(</span><span class='n'>bitWidth</span><span class='o'>.</span><span class='n'>W</span><span class='o'>))</span>
+    <span class='k'>val</span> <span class='n'>out</span> <span class='k'>=</span> <span class='nc'>Output</span><span class='o'>(</span><span class='nc'>UInt</span><span class='o'>(</span><span class='n'>bitWidth</span><span class='o'>.</span><span class='n'>W</span><span class='o'>))</span>
+  <span class='o'>})</span>
+
+  <span class='k'>val</span> <span class='n'>regs</span> <span class='k'>=</span> <span class='n'>mutable</span><span class='o'>.</span><span class='nc'>ArrayBuffer</span><span class='o'>[</span><span class='kt'>UInt</span><span class='o'>]()</span>
+  <span class='k'>for</span><span class='o'>(</span><span class='n'>i</span> <span class='k'>&lt;-</span> <span class='mi'>0</span> <span class='n'>until</span> <span class='n'>consts</span><span class='o'>.</span><span class='n'>length</span><span class='o'>)</span> <span class='o'>{</span>
+      <span class='k'>if</span><span class='o'>(</span><span class='n'>i</span> <span class='o'>==</span> <span class='mi'>0</span><span class='o'>)</span> <span class='n'>regs</span> <span class='o'>+=</span> <span class='n'>io</span><span class='o'>.</span><span class='n'>in</span>
+      <span class='k'>else</span>       <span class='n'>regs</span> <span class='o'>+=</span> <span class='nc'>RegNext</span><span class='o'>(</span><span class='n'>regs</span><span class='o'>(</span><span class='n'>i</span> <span class='o'>-</span> <span class='mi'>1</span><span class='o'>),</span> <span class='mf'>0.</span><span class='n'>U</span><span class='o'>)</span>
+  <span class='o'>}</span>
+  
+  <span class='k'>val</span> <span class='n'>muls</span> <span class='k'>=</span> <span class='n'>mutable</span><span class='o'>.</span><span class='nc'>ArrayBuffer</span><span class='o'>[</span><span class='kt'>UInt</span><span class='o'>]()</span>
+  <span class='k'>for</span><span class='o'>(</span><span class='n'>i</span> <span class='k'>&lt;-</span> <span class='mi'>0</span> <span class='n'>until</span> <span class='n'>consts</span><span class='o'>.</span><span class='n'>length</span><span class='o'>)</span> <span class='o'>{</span>
+      <span class='n'>muls</span> <span class='o'>+=</span> <span class='n'>regs</span><span class='o'>(</span><span class='n'>i</span><span class='o'>)</span> <span class='o'>*</span> <span class='n'>consts</span><span class='o'>(</span><span class='n'>i</span><span class='o'>).</span><span class='n'>U</span>
+  <span class='o'>}</span>
+
+  <span class='k'>val</span> <span class='n'>scan</span> <span class='k'>=</span> <span class='n'>mutable</span><span class='o'>.</span><span class='nc'>ArrayBuffer</span><span class='o'>[</span><span class='kt'>UInt</span><span class='o'>]()</span>
+  <span class='k'>for</span><span class='o'>(</span><span class='n'>i</span> <span class='k'>&lt;-</span> <span class='mi'>0</span> <span class='n'>until</span> <span class='n'>consts</span><span class='o'>.</span><span class='n'>length</span><span class='o'>)</span> <span class='o'>{</span>
+      <span class='k'>if</span><span class='o'>(</span><span class='n'>i</span> <span class='o'>==</span> <span class='mi'>0</span><span class='o'>)</span> <span class='n'>scan</span> <span class='o'>+=</span> <span class='n'>muls</span><span class='o'>(</span><span class='n'>i</span><span class='o'>)</span>
+      <span class='k'>else</span> <span class='n'>scan</span> <span class='o'>+=</span> <span class='n'>muls</span><span class='o'>(</span><span class='n'>i</span><span class='o'>)</span> <span class='o'>+</span> <span class='n'>scan</span><span class='o'>(</span><span class='n'>i</span> <span class='o'>-</span> <span class='mi'>1</span><span class='o'>)</span>
+  <span class='o'>}</span>
+
+  <span class='n'>io</span><span class='o'>.</span><span class='n'>out</span> <span class='o'>:=</span> <span class='n'>scan</span><span class='o'>.</span><span class='n'>last</span>
 <span class='o'>}</span>
-<span class='n'>assert</span><span class='o'>(</span><span class='n'>works</span><span class='o'>)</span> <span class='c1'>// Scala 代码：如果 works == false，这里会抛出异常</span>
-<span class='n'>println</span><span class='o'>(</span><span class='s'>&quot;SUCCESS!!&quot;</span><span class='o'>)</span> <span class='c1'>// Scala 代码：到这里测试就通过了</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class='output_wrapper'>
+<div class='output'>
+
+
+<div class='output_area'>
+
+    <div class='prompt output_prompt'>Out[7]:</div>
+
+
+
+
+<div class='output_text output_subarea output_execute_result'>
+<pre>defined <span class='ansi-green-fg'>class</span> <span class='ansi-cyan-fg'>MyManyElementFir</span></pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class='cell border-box-sizing text_cell rendered'><div class='prompt input_prompt'>
+</div><div class='inner_cell'>
+<div class='text_cell_render border-box-sizing rendered_html'>
+<h4 id='&#25105;&#20204;&#26159;&#24590;&#20040;&#20570;&#21040;&#30340;'>&#25105;&#20204;&#26159;&#24590;&#20040;&#20570;&#21040;&#30340;</h4><p>从第7、13和18行开始，共有三个并行的部分。
+我们使用一种名为<code>ArrayBuffer</code>的Scala容器类型。
+<code>ArrayBuffer</code>允许您使用<code>+=</code>运算符来添加元素（也可以插入和删除，但我们不需要）。
+首先，我们创建一个<code>ArrayBuffer</code>的<code>regs</code>，其元素将为<code>UInt</code>类型。
+然后遍历抽头，将输入添加为第一个元素，然后使用<code>RegNext</code>创建寄存器，将该寄存器的输入连接到前一个寄存器（<code>regs(i-1)</code>），并将其初始化为无符号的0（<code>0.U</code>）。
+这些寄存器用来保留之前输入的值。</p>
+<p>接下来，我们创建另一个<code>UInt</code>类型的另一个<code>ArrayBuffer</code>-<code>muls</code>。
+<code>muls</code>的每个元素都是一个节点，其第i个元素是<code>regs(i)</code>和 <code>const(i)</code>的乘积。</p>
+<p>注意<code>scan.last</code>方法的使用。
+它用来获取容器的最后一个元素，是之前构造<code>regs</code>时采用的<code>regs(i - 1)</code>的另一种更优雅的替代方案。</p>
+
+</div>
+</div>
+</div>
+<div class='cell border-box-sizing text_cell rendered'><div class='prompt input_prompt'>
+</div><div class='inner_cell'>
+<div class='text_cell_render border-box-sizing rendered_html'>
+<h3 id='&#23427;&#30340;&#34892;&#20026;&#19982;My4ElementFir&#30456;&#21516;&#21527;&#65311;'>&#23427;&#30340;&#34892;&#20026;&#19982;<code>My4ElementFir</code>&#30456;&#21516;&#21527;&#65311;</h3><p>新版本的第一个测试是看它是否可以通过我们刚刚应于<code>My4ElementFir</code>的测试。
+我们创建一个<code>MyManyElementFir</code>的实例，并通过它运行更多数据。</p>
+
+</div>
+</div>
+</div>
+<div class='cell border-box-sizing code_cell rendered'>
+<div class='input'>
+<div class='prompt input_prompt'>In&nbsp;[8]:</div>
+<div class='inner_cell'>
+    <div class='input_area'>
+<div class=' highlight hl-scala'><pre><span></span><span class='k'>val</span> <span class='n'>goldenModel</span> <span class='k'>=</span> <span class='k'>new</span> <span class='nc'>ScalaFirFilter</span><span class='o'>(</span><span class='nc'>Seq</span><span class='o'>(</span><span class='mi'>1</span><span class='o'>,</span> <span class='mi'>1</span><span class='o'>,</span> <span class='mi'>1</span><span class='o'>,</span> <span class='mi'>1</span><span class='o'>))</span>
+
+<span class='nc'>Driver</span><span class='o'>(()</span> <span class='k'>=&gt;</span> <span class='k'>new</span> <span class='nc'>MyManyElementFir</span><span class='o'>(</span><span class='nc'>Seq</span><span class='o'>(</span><span class='mi'>1</span><span class='o'>,</span> <span class='mi'>1</span><span class='o'>,</span> <span class='mi'>1</span><span class='o'>,</span> <span class='mi'>1</span><span class='o'>),</span> <span class='mi'>8</span><span class='o'>))</span> <span class='o'>{</span>
+  <span class='n'>c</span> <span class='k'>=&gt;</span> <span class='k'>new</span> <span class='nc'>PeekPokeTester</span><span class='o'>(</span><span class='n'>c</span><span class='o'>)</span> <span class='o'>{</span>
+    <span class='k'>for</span><span class='o'>(</span><span class='n'>i</span> <span class='k'>&lt;-</span> <span class='mi'>0</span> <span class='n'>until</span> <span class='mi'>100</span><span class='o'>)</span> <span class='o'>{</span>
+      <span class='k'>val</span> <span class='n'>input</span> <span class='k'>=</span> <span class='n'>scala</span><span class='o'>.</span><span class='n'>util</span><span class='o'>.</span><span class='nc'>Random</span><span class='o'>.</span><span class='n'>nextInt</span><span class='o'>(</span><span class='mi'>8</span><span class='o'>)</span>
+
+      <span class='k'>val</span> <span class='n'>goldenModelResult</span> <span class='k'>=</span> <span class='n'>goldenModel</span><span class='o'>.</span><span class='n'>poke</span><span class='o'>(</span><span class='n'>input</span><span class='o'>)</span>
+
+      <span class='n'>poke</span><span class='o'>(</span><span class='n'>c</span><span class='o'>.</span><span class='n'>io</span><span class='o'>.</span><span class='n'>in</span><span class='o'>,</span> <span class='n'>input</span><span class='o'>)</span>
+
+      <span class='n'>expect</span><span class='o'>(</span><span class='n'>c</span><span class='o'>.</span><span class='n'>io</span><span class='o'>.</span><span class='n'>out</span><span class='o'>,</span> <span class='n'>goldenModelResult</span><span class='o'>,</span> <span class='s'>s&quot;i </span><span class='si'>$i</span><span class='s'>, input </span><span class='si'>$input</span><span class='s'>, gm </span><span class='si'>$goldenModelResult</span><span class='s'>, </span><span class='si'>${</span><span class='n'>peek</span><span class='o'>(</span><span class='n'>c</span><span class='o'>.</span><span class='n'>io</span><span class='o'>.</span><span class='n'>out</span><span class='o'>)</span><span class='si'>}</span><span class='s'>&quot;</span><span class='o'>)</span>
+
+      <span class='n'>step</span><span class='o'>(</span><span class='mi'>1</span><span class='o'>)</span>
+    <span class='o'>}</span>
+  <span class='o'>}</span>
+<span class='o'>}</span>
 </pre></div>
 
     </div>
@@ -13757,53 +13745,363 @@ defined <span class='ansi-green-fg'>class</span> <span class='ansi-cyan-fg'>Sort
 
 <div class='output_subarea output_stream output_stdout output_text'>
 <pre>[<span class='ansi-magenta-fg'>info</span>] [0.000] Elaborating design...
-[<span class='ansi-magenta-fg'>info</span>] [0.078] Done elaborating.
-Total FIRRTL Compile Time: 66.5 ms
-Total FIRRTL Compile Time: 37.8 ms
+[<span class='ansi-magenta-fg'>info</span>] [0.014] Done elaborating.
+Total FIRRTL Compile Time: 58.3 ms
+Total FIRRTL Compile Time: 55.5 ms
 End of dependency graph
 Circuit state created
-[<span class='ansi-magenta-fg'>info</span>] [0.000] SEED 1562046540126
-[<span class='ansi-magenta-fg'>info</span>] [0.016] Sorting 1 2 3 4
-[<span class='ansi-magenta-fg'>info</span>] [0.022] Sorting 1 2 4 3
-[<span class='ansi-magenta-fg'>info</span>] [0.023] Sorting 1 3 2 4
-[<span class='ansi-magenta-fg'>info</span>] [0.026] Sorting 1 3 4 2
-[<span class='ansi-magenta-fg'>info</span>] [0.028] Sorting 1 4 2 3
-[<span class='ansi-magenta-fg'>info</span>] [0.032] Sorting 1 4 3 2
-[<span class='ansi-magenta-fg'>info</span>] [0.034] Sorting 2 1 3 4
-[<span class='ansi-magenta-fg'>info</span>] [0.036] Sorting 2 1 4 3
-[<span class='ansi-magenta-fg'>info</span>] [0.038] Sorting 2 3 1 4
-[<span class='ansi-magenta-fg'>info</span>] [0.039] Sorting 2 3 4 1
-[<span class='ansi-magenta-fg'>info</span>] [0.042] Sorting 2 4 1 3
-[<span class='ansi-magenta-fg'>info</span>] [0.043] Sorting 2 4 3 1
-[<span class='ansi-magenta-fg'>info</span>] [0.044] Sorting 3 1 2 4
-[<span class='ansi-magenta-fg'>info</span>] [0.046] Sorting 3 1 4 2
-[<span class='ansi-magenta-fg'>info</span>] [0.047] Sorting 3 2 1 4
-[<span class='ansi-magenta-fg'>info</span>] [0.048] Sorting 3 2 4 1
-[<span class='ansi-magenta-fg'>info</span>] [0.049] Sorting 3 4 1 2
-[<span class='ansi-magenta-fg'>info</span>] [0.050] Sorting 3 4 2 1
-[<span class='ansi-magenta-fg'>info</span>] [0.051] Sorting 4 1 2 3
-[<span class='ansi-magenta-fg'>info</span>] [0.052] Sorting 4 1 3 2
-[<span class='ansi-magenta-fg'>info</span>] [0.054] Sorting 4 2 1 3
-[<span class='ansi-magenta-fg'>info</span>] [0.056] Sorting 4 2 3 1
-[<span class='ansi-magenta-fg'>info</span>] [0.057] Sorting 4 3 1 2
-[<span class='ansi-magenta-fg'>info</span>] [0.058] Sorting 4 3 2 1
-test cmd4HelperSort4 Success: 96 tests passed in 5 cycles taking 0.063934 seconds
-[<span class='ansi-magenta-fg'>info</span>] [0.061] RAN 0 CYCLES PASSED
-SUCCESS!!
+[<span class='ansi-magenta-fg'>info</span>] [0.000] SEED 1572488626575
+test cmd6HelperMyManyElementFir Success: 100 tests passed in 105 cycles taking 0.061406 seconds
+[<span class='ansi-magenta-fg'>info</span>] [0.059] RAN 100 CYCLES PASSED
 </pre>
 </div>
 </div>
 
 <div class='output_area'>
 
-    <div class='prompt output_prompt'>Out[6]:</div>
+    <div class='prompt output_prompt'>Out[8]:</div>
 
 
 
 
 <div class='output_text output_subarea output_execute_result'>
-<pre>defined <span class='ansi-green-fg'>class</span> <span class='ansi-cyan-fg'>BetterSort4Tester</span>
-<span class='ansi-cyan-fg'>works</span>: <span class='ansi-green-fg'>Boolean</span> = true</pre>
+<pre><span class='ansi-cyan-fg'>goldenModel</span>: <span class='ansi-green-fg'>ScalaFirFilter</span> = ammonite.$sess.cmd3$Helper$ScalaFirFilter@2848fd38
+<span class='ansi-cyan-fg'>res7_1</span>: <span class='ansi-green-fg'>Boolean</span> = true</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class='cell border-box-sizing text_cell rendered'><div class='prompt input_prompt'>
+</div><div class='inner_cell'>
+<div class='text_cell_render border-box-sizing rendered_html'>
+<h3 id='&#29616;&#22312;&#35753;&#25105;&#20204;&#27979;&#35797;&#19968;&#22534;&#19981;&#21516;&#22823;&#23567;&#30340;FIR&#28388;&#27874;&#22120;'>&#29616;&#22312;&#35753;&#25105;&#20204;&#27979;&#35797;&#19968;&#22534;&#19981;&#21516;&#22823;&#23567;&#30340;FIR&#28388;&#27874;&#22120;</h3><p>我们创建了一些辅助函数：<code>r</code>用来生成一个随机数；<code>runOneTest</code>会为一组特定的抽头（tap）创建一个黄金软件模型和一个滤波器的硬件仿真，然后运行至少两倍于抽头的数目的测试数据。</p>
+
+</div>
+</div>
+</div>
+<div class='cell border-box-sizing code_cell rendered'>
+<div class='input'>
+<div class='prompt input_prompt'>In&nbsp;[9]:</div>
+<div class='inner_cell'>
+    <div class='input_area'>
+<div class=' highlight hl-scala'><pre><span></span><span class='cm'>/** 用于生成随机数的方便函数 </span>
+<span class='cm'>  */</span>
+<span class='k'>def</span> <span class='n'>r</span><span class='o'>()</span><span class='k'>:</span> <span class='kt'>Int</span> <span class='o'>=</span> <span class='o'>{</span>
+  <span class='n'>scala</span><span class='o'>.</span><span class='n'>util</span><span class='o'>.</span><span class='nc'>Random</span><span class='o'>.</span><span class='n'>nextInt</span><span class='o'>(</span><span class='mi'>1024</span><span class='o'>)</span>
+<span class='o'>}</span>
+
+<span class='cm'>/**</span>
+<span class='cm'>  * 运行测试对比软件和硬件的滤波器输出 </span>
+<span class='cm'>  * 运行次数至少抽头数目的两倍 2 * taps.length</span>
+<span class='cm'>  */</span>
+<span class='k'>def</span> <span class='n'>runOneTest</span><span class='o'>(</span><span class='n'>taps</span><span class='k'>:</span> <span class='kt'>Seq</span><span class='o'>[</span><span class='kt'>Int</span><span class='o'>])</span> <span class='o'>{</span>
+  <span class='k'>val</span> <span class='n'>goldenModel</span> <span class='k'>=</span> <span class='k'>new</span> <span class='nc'>ScalaFirFilter</span><span class='o'>(</span><span class='n'>taps</span><span class='o'>)</span>
+
+  <span class='nc'>Driver</span><span class='o'>(()</span> <span class='k'>=&gt;</span> <span class='k'>new</span> <span class='nc'>MyManyElementFir</span><span class='o'>(</span><span class='n'>taps</span><span class='o'>,</span> <span class='mi'>32</span><span class='o'>))</span> <span class='o'>{</span>
+    <span class='n'>c</span> <span class='k'>=&gt;</span> <span class='k'>new</span> <span class='nc'>PeekPokeTester</span><span class='o'>(</span><span class='n'>c</span><span class='o'>)</span> <span class='o'>{</span>
+      <span class='k'>for</span><span class='o'>(</span><span class='n'>i</span> <span class='k'>&lt;-</span> <span class='mi'>0</span> <span class='n'>until</span> <span class='mi'>2</span> <span class='o'>*</span> <span class='n'>taps</span><span class='o'>.</span><span class='n'>length</span><span class='o'>)</span> <span class='o'>{</span>
+        <span class='k'>val</span> <span class='n'>input</span> <span class='k'>=</span> <span class='n'>r</span><span class='o'>()</span>
+
+        <span class='k'>val</span> <span class='n'>goldenModelResult</span> <span class='k'>=</span> <span class='n'>goldenModel</span><span class='o'>.</span><span class='n'>poke</span><span class='o'>(</span><span class='n'>input</span><span class='o'>)</span>
+
+        <span class='n'>poke</span><span class='o'>(</span><span class='n'>c</span><span class='o'>.</span><span class='n'>io</span><span class='o'>.</span><span class='n'>in</span><span class='o'>,</span> <span class='n'>input</span><span class='o'>)</span>
+
+        <span class='n'>expect</span><span class='o'>(</span><span class='n'>c</span><span class='o'>.</span><span class='n'>io</span><span class='o'>.</span><span class='n'>out</span><span class='o'>,</span> <span class='n'>goldenModelResult</span><span class='o'>,</span> <span class='s'>s&quot;i </span><span class='si'>$i</span><span class='s'>, input </span><span class='si'>$input</span><span class='s'>, gm </span><span class='si'>$goldenModelResult</span><span class='s'>, </span><span class='si'>${</span><span class='n'>peek</span><span class='o'>(</span><span class='n'>c</span><span class='o'>.</span><span class='n'>io</span><span class='o'>.</span><span class='n'>out</span><span class='o'>)</span><span class='si'>}</span><span class='s'>&quot;</span><span class='o'>)</span>
+
+        <span class='n'>step</span><span class='o'>(</span><span class='mi'>1</span><span class='o'>)</span>
+      <span class='o'>}</span>
+    <span class='o'>}</span>
+  <span class='o'>}</span>
+<span class='o'>}</span>
+
+<span class='k'>for</span><span class='o'>(</span><span class='n'>tapSize</span> <span class='k'>&lt;-</span> <span class='mi'>2</span> <span class='n'>until</span> <span class='mi'>100</span> <span class='n'>by</span> <span class='mi'>10</span><span class='o'>)</span> <span class='o'>{</span>
+  <span class='k'>val</span> <span class='n'>taps</span> <span class='k'>=</span> <span class='nc'>Seq</span><span class='o'>.</span><span class='n'>fill</span><span class='o'>(</span><span class='n'>tapSize</span><span class='o'>)(</span><span class='n'>r</span><span class='o'>())</span>  <span class='c1'>// 创建一系列的随机参数</span>
+
+  <span class='n'>runOneTest</span><span class='o'>(</span><span class='n'>taps</span><span class='o'>)</span>
+<span class='o'>}</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class='output_wrapper'>
+<div class='output'>
+
+
+<div class='output_area'>
+
+    <div class='prompt'></div>
+
+
+<div class='output_subarea output_stream output_stdout output_text'>
+<pre>[<span class='ansi-magenta-fg'>info</span>] [0.000] Elaborating design...
+[<span class='ansi-magenta-fg'>info</span>] [0.074] Done elaborating.
+Total FIRRTL Compile Time: 46.8 ms
+Total FIRRTL Compile Time: 39.2 ms
+End of dependency graph
+Circuit state created
+[<span class='ansi-magenta-fg'>info</span>] [0.000] SEED 1572488627334
+test cmd6HelperMyManyElementFir Success: 4 tests passed in 9 cycles taking 0.006255 seconds
+[<span class='ansi-magenta-fg'>info</span>] [0.005] RAN 4 CYCLES PASSED
+[<span class='ansi-magenta-fg'>info</span>] [0.000] Elaborating design...
+[<span class='ansi-magenta-fg'>info</span>] [0.012] Done elaborating.
+Total FIRRTL Compile Time: 92.4 ms
+Total FIRRTL Compile Time: 71.0 ms
+End of dependency graph
+Circuit state created
+[<span class='ansi-magenta-fg'>info</span>] [0.000] SEED 1572488627591
+test cmd6HelperMyManyElementFir Success: 24 tests passed in 29 cycles taking 0.041233 seconds
+[<span class='ansi-magenta-fg'>info</span>] [0.036] RAN 24 CYCLES PASSED
+[<span class='ansi-magenta-fg'>info</span>] [0.000] Elaborating design...
+[<span class='ansi-magenta-fg'>info</span>] [0.015] Done elaborating.
+Total FIRRTL Compile Time: 108.6 ms
+Total FIRRTL Compile Time: 111.8 ms
+End of dependency graph
+Circuit state created
+[<span class='ansi-magenta-fg'>info</span>] [0.000] SEED 1572488627969
+test cmd6HelperMyManyElementFir Success: 44 tests passed in 49 cycles taking 0.074680 seconds
+[<span class='ansi-magenta-fg'>info</span>] [0.069] RAN 44 CYCLES PASSED
+[<span class='ansi-magenta-fg'>info</span>] [0.000] Elaborating design...
+[<span class='ansi-magenta-fg'>info</span>] [0.012] Done elaborating.
+Total FIRRTL Compile Time: 109.2 ms
+Total FIRRTL Compile Time: 92.4 ms
+End of dependency graph
+Circuit state created
+[<span class='ansi-magenta-fg'>info</span>] [0.000] SEED 1572488628486
+test cmd6HelperMyManyElementFir Success: 64 tests passed in 69 cycles taking 0.100976 seconds
+[<span class='ansi-magenta-fg'>info</span>] [0.095] RAN 64 CYCLES PASSED
+[<span class='ansi-magenta-fg'>info</span>] [0.000] Elaborating design...
+[<span class='ansi-magenta-fg'>info</span>] [0.014] Done elaborating.
+Total FIRRTL Compile Time: 160.7 ms
+Total FIRRTL Compile Time: 155.5 ms
+End of dependency graph
+Circuit state created
+[<span class='ansi-magenta-fg'>info</span>] [0.000] SEED 1572488629000
+test cmd6HelperMyManyElementFir Success: 84 tests passed in 89 cycles taking 0.183239 seconds
+[<span class='ansi-magenta-fg'>info</span>] [0.176] RAN 84 CYCLES PASSED
+[<span class='ansi-magenta-fg'>info</span>] [0.000] Elaborating design...
+[<span class='ansi-magenta-fg'>info</span>] [0.081] Done elaborating.
+Total FIRRTL Compile Time: 125.9 ms
+Total FIRRTL Compile Time: 112.4 ms
+End of dependency graph
+Circuit state created
+[<span class='ansi-magenta-fg'>info</span>] [0.000] SEED 1572488629771
+test cmd6HelperMyManyElementFir Success: 104 tests passed in 109 cycles taking 0.220890 seconds
+[<span class='ansi-magenta-fg'>info</span>] [0.206] RAN 104 CYCLES PASSED
+[<span class='ansi-magenta-fg'>info</span>] [0.000] Elaborating design...
+[<span class='ansi-magenta-fg'>info</span>] [0.062] Done elaborating.
+Total FIRRTL Compile Time: 122.9 ms
+Total FIRRTL Compile Time: 125.2 ms
+End of dependency graph
+Circuit state created
+[<span class='ansi-magenta-fg'>info</span>] [0.000] SEED 1572488630497
+test cmd6HelperMyManyElementFir Success: 124 tests passed in 129 cycles taking 0.173279 seconds
+[<span class='ansi-magenta-fg'>info</span>] [0.166] RAN 124 CYCLES PASSED
+[<span class='ansi-magenta-fg'>info</span>] [0.000] Elaborating design...
+[<span class='ansi-magenta-fg'>info</span>] [0.010] Done elaborating.
+Total FIRRTL Compile Time: 121.8 ms
+Total FIRRTL Compile Time: 118.7 ms
+End of dependency graph
+Circuit state created
+[<span class='ansi-magenta-fg'>info</span>] [0.000] SEED 1572488631178
+test cmd6HelperMyManyElementFir Success: 144 tests passed in 149 cycles taking 0.233300 seconds
+[<span class='ansi-magenta-fg'>info</span>] [0.225] RAN 144 CYCLES PASSED
+[<span class='ansi-magenta-fg'>info</span>] [0.000] Elaborating design...
+[<span class='ansi-magenta-fg'>info</span>] [0.084] Done elaborating.
+Total FIRRTL Compile Time: 142.2 ms
+Total FIRRTL Compile Time: 118.5 ms
+End of dependency graph
+Circuit state created
+[<span class='ansi-magenta-fg'>info</span>] [0.000] SEED 1572488631859
+test cmd6HelperMyManyElementFir Success: 164 tests passed in 169 cycles taking 0.285641 seconds
+[<span class='ansi-magenta-fg'>info</span>] [0.280] RAN 164 CYCLES PASSED
+[<span class='ansi-magenta-fg'>info</span>] [0.000] Elaborating design...
+[<span class='ansi-magenta-fg'>info</span>] [0.057] Done elaborating.
+Total FIRRTL Compile Time: 122.2 ms
+Total FIRRTL Compile Time: 130.1 ms
+End of dependency graph
+Circuit state created
+[<span class='ansi-magenta-fg'>info</span>] [0.000] SEED 1572488632687
+test cmd6HelperMyManyElementFir Success: 184 tests passed in 189 cycles taking 0.343599 seconds
+[<span class='ansi-magenta-fg'>info</span>] [0.336] RAN 184 CYCLES PASSED
+</pre>
+</div>
+</div>
+
+<div class='output_area'>
+
+    <div class='prompt output_prompt'>Out[9]:</div>
+
+
+
+
+<div class='output_text output_subarea output_execute_result'>
+<pre>defined <span class='ansi-green-fg'>function</span> <span class='ansi-cyan-fg'>r</span>
+defined <span class='ansi-green-fg'>function</span> <span class='ansi-cyan-fg'>runOneTest</span></pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class='cell border-box-sizing text_cell rendered'><div class='prompt input_prompt'>
+</div><div class='inner_cell'>
+<div class='text_cell_render border-box-sizing rendered_html'>
+<h3 id='&#21482;&#26159;&#20026;&#20102;&#22909;&#29609;&#65292;&#25105;&#20204;&#26469;&#20570;&#19968;&#20010;&#26356;&#22823;&#30340;FIR&#28388;&#27874;&#22120;'>&#21482;&#26159;&#20026;&#20102;&#22909;&#29609;&#65292;&#25105;&#20204;&#26469;&#20570;&#19968;&#20010;&#26356;&#22823;&#30340;FIR&#28388;&#27874;&#22120;</h3><p>以下将在500抽头上运行单个测试
+FIR滤波器。运行可能需要一分钟左右的时间。</p>
+
+</div>
+</div>
+</div>
+<div class='cell border-box-sizing code_cell rendered'>
+<div class='input'>
+<div class='prompt input_prompt'>In&nbsp;[10]:</div>
+<div class='inner_cell'>
+    <div class='input_area'>
+<div class=' highlight hl-scala'><pre><span></span><span class='n'>runOneTest</span><span class='o'>(</span><span class='nc'>Seq</span><span class='o'>.</span><span class='n'>fill</span><span class='o'>(</span><span class='mi'>500</span><span class='o'>)(</span><span class='n'>r</span><span class='o'>()))</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class='output_wrapper'>
+<div class='output'>
+
+
+<div class='output_area'>
+
+    <div class='prompt'></div>
+
+
+<div class='output_subarea output_stream output_stdout output_text'>
+<pre>[<span class='ansi-magenta-fg'>info</span>] [0.000] Elaborating design...
+[<span class='ansi-magenta-fg'>info</span>] [0.095] Done elaborating.
+Total FIRRTL Compile Time: 708.0 ms
+Total FIRRTL Compile Time: 630.4 ms
+End of dependency graph
+Circuit state created
+[<span class='ansi-magenta-fg'>info</span>] [0.000] SEED 1572488633741
+test cmd6HelperMyManyElementFir Success: 1000 tests passed in 1005 cycles taking 8.624099 seconds
+[<span class='ansi-magenta-fg'>info</span>] [8.571] RAN 1000 CYCLES PASSED
+</pre>
+</div>
+</div>
+
+</div>
+</div>
+
+</div>
+<div class='cell border-box-sizing code_cell rendered'>
+<div class='input'>
+<div class='prompt input_prompt'>In&nbsp;[11]:</div>
+<div class='inner_cell'>
+    <div class='input_area'>
+<div class=' highlight hl-scala'><pre><span></span><span class='k'>val</span> <span class='n'>taps</span> <span class='k'>=</span> <span class='nc'>Seq</span><span class='o'>.</span><span class='n'>fill</span><span class='o'>(</span><span class='mi'>500</span><span class='o'>)(</span><span class='n'>r</span><span class='o'>())</span>
+
+<span class='k'>val</span> <span class='n'>goldenModel</span> <span class='k'>=</span> <span class='k'>new</span> <span class='nc'>ScalaFirFilter</span><span class='o'>(</span><span class='n'>taps</span><span class='o'>)</span>
+
+<span class='nc'>Driver</span><span class='o'>(()</span> <span class='k'>=&gt;</span> <span class='k'>new</span> <span class='nc'>MyManyElementFir</span><span class='o'>(</span><span class='n'>taps</span><span class='o'>,</span> <span class='mi'>32</span><span class='o'>))</span> <span class='o'>{</span>
+  <span class='n'>c</span> <span class='k'>=&gt;</span> <span class='k'>new</span> <span class='nc'>PeekPokeTester</span><span class='o'>(</span><span class='n'>c</span><span class='o'>)</span> <span class='o'>{</span>
+    <span class='k'>for</span><span class='o'>(</span><span class='n'>i</span> <span class='k'>&lt;-</span> <span class='mi'>0</span> <span class='n'>until</span> <span class='mi'>100</span><span class='o'>)</span> <span class='o'>{</span>
+      <span class='k'>val</span> <span class='n'>input</span> <span class='k'>=</span> <span class='n'>r</span><span class='o'>()</span>
+
+      <span class='k'>val</span> <span class='n'>goldenModelResult</span> <span class='k'>=</span> <span class='n'>goldenModel</span><span class='o'>.</span><span class='n'>poke</span><span class='o'>(</span><span class='n'>input</span><span class='o'>)</span>
+
+      <span class='n'>poke</span><span class='o'>(</span><span class='n'>c</span><span class='o'>.</span><span class='n'>io</span><span class='o'>.</span><span class='n'>in</span><span class='o'>,</span> <span class='n'>input</span><span class='o'>)</span>
+
+      <span class='n'>expect</span><span class='o'>(</span><span class='n'>c</span><span class='o'>.</span><span class='n'>io</span><span class='o'>.</span><span class='n'>out</span><span class='o'>,</span> <span class='n'>goldenModelResult</span><span class='o'>,</span> <span class='s'>s&quot;i </span><span class='si'>$i</span><span class='s'>, input </span><span class='si'>$input</span><span class='s'>, gm </span><span class='si'>$goldenModelResult</span><span class='s'>, </span><span class='si'>${</span><span class='n'>peek</span><span class='o'>(</span><span class='n'>c</span><span class='o'>.</span><span class='n'>io</span><span class='o'>.</span><span class='n'>out</span><span class='o'>)</span><span class='si'>}</span><span class='s'>&quot;</span><span class='o'>)</span>
+
+      <span class='n'>step</span><span class='o'>(</span><span class='mi'>1</span><span class='o'>)</span>
+    <span class='o'>}</span>
+  <span class='o'>}</span>
+<span class='o'>}</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class='output_wrapper'>
+<div class='output'>
+
+
+<div class='output_area'>
+
+    <div class='prompt'></div>
+
+
+<div class='output_subarea output_stream output_stdout output_text'>
+<pre>[<span class='ansi-magenta-fg'>info</span>] [0.000] Elaborating design...
+[<span class='ansi-magenta-fg'>info</span>] [0.068] Done elaborating.
+Total FIRRTL Compile Time: 534.3 ms
+Total FIRRTL Compile Time: 564.5 ms
+End of dependency graph
+Circuit state created
+[<span class='ansi-magenta-fg'>info</span>] [0.000] SEED 1572488645095
+test cmd6HelperMyManyElementFir Success: 100 tests passed in 105 cycles taking 0.972853 seconds
+[<span class='ansi-magenta-fg'>info</span>] [0.935] RAN 100 CYCLES PASSED
+</pre>
+</div>
+</div>
+
+<div class='output_area'>
+
+    <div class='prompt output_prompt'>Out[11]:</div>
+
+
+
+
+<div class='output_text output_subarea output_execute_result'>
+<pre><span class='ansi-cyan-fg'>taps</span>: <span class='ansi-green-fg'>Seq</span>[<span class='ansi-green-fg'>Int</span>] = <span class='ansi-yellow-fg'>List</span>(
+  <span class='ansi-green-fg'>848</span>,
+  <span class='ansi-green-fg'>161</span>,
+  <span class='ansi-green-fg'>217</span>,
+  <span class='ansi-green-fg'>157</span>,
+  <span class='ansi-green-fg'>669</span>,
+  <span class='ansi-green-fg'>383</span>,
+  <span class='ansi-green-fg'>47</span>,
+  <span class='ansi-green-fg'>752</span>,
+  <span class='ansi-green-fg'>294</span>,
+  <span class='ansi-green-fg'>104</span>,
+  <span class='ansi-green-fg'>604</span>,
+  <span class='ansi-green-fg'>842</span>,
+  <span class='ansi-green-fg'>188</span>,
+  <span class='ansi-green-fg'>221</span>,
+  <span class='ansi-green-fg'>292</span>,
+  <span class='ansi-green-fg'>724</span>,
+  <span class='ansi-green-fg'>995</span>,
+  <span class='ansi-green-fg'>250</span>,
+  <span class='ansi-green-fg'>52</span>,
+  <span class='ansi-green-fg'>923</span>,
+  <span class='ansi-green-fg'>923</span>,
+  <span class='ansi-green-fg'>514</span>,
+  <span class='ansi-green-fg'>12</span>,
+  <span class='ansi-green-fg'>641</span>,
+  <span class='ansi-green-fg'>622</span>,
+  <span class='ansi-green-fg'>660</span>,
+  <span class='ansi-green-fg'>34</span>,
+  <span class='ansi-green-fg'>903</span>,
+  <span class='ansi-green-fg'>631</span>,
+  <span class='ansi-green-fg'>842</span>,
+  <span class='ansi-green-fg'>1012</span>,
+  <span class='ansi-green-fg'>83</span>,
+  <span class='ansi-green-fg'>236</span>,
+  <span class='ansi-green-fg'>71</span>,
+  <span class='ansi-green-fg'>197</span>,
+  <span class='ansi-green-fg'>202</span>,
+  <span class='ansi-green-fg'>962</span>,
+  <span class='ansi-green-fg'>816</span>,
+...
+<span class='ansi-cyan-fg'>goldenModel</span>: <span class='ansi-green-fg'>ScalaFirFilter</span> = ammonite.$sess.cmd3$Helper$ScalaFirFilter@46f36148
+<span class='ansi-cyan-fg'>res10_2</span>: <span class='ansi-green-fg'>Boolean</span> = true</pre>
 </div>
 
 </div>
@@ -13816,15 +14114,165 @@ SUCCESS!!
 </div><div class='inner_cell'>
 <div class='text_cell_render border-box-sizing rendered_html'>
 <hr>
-<h1 id='&#32451;&#20064;'>&#32451;&#20064;</h1><p><span style='color:red'>**练习：多项式电路**</span><br>
-写一个模块来计算下面的多项式：</p>
-<ul>
-<li>$x^2 - 2x + 1$</li>
-<li>$2x^2 + 6x + 3$</li>
-<li>$4x^2 - 10x -5$</li>
-</ul>
-<p>选择器的一个输入用来决定所要计算的多项式。使用<code>Wire</code>使得$x^2$计算在模块中只出现一次，从而输出只有一个连接。</p>
-<p>首先让我们使用测试驱动开发（TDD），并使用Scala编写测试。完成下面这些函数，使得其通过后面的断言。这并不是一个详尽的测试，而只是一个简单的完整性检查。</p>
+<h1 id='&#30828;&#20214;&#23481;&#22120;'>&#30828;&#20214;&#23481;&#22120;</h1><p><span style='color:blue'> **示例：在我们的FIR滤波器中添加运行时可配置的抽头（tap）** </span><br>
+下面的代码在FIR生成器的IO里添加了一个额外的<code>consts</code>向量，该向量允许在电路生成后从外部更改参数。
+这是通过Chisel的容器类型<code>Vec</code>完成的。
+<code>Vec</code>支持许多Scala容器的方法，但它只能包含Chisel硬件元素。
+<code>Vec</code>仅应该在普通Scala容器用不了的情况下使用。
+基本上，这是以下两种情况之一：</p>
+<ol>
+<li>您需要在Bundle（通常是将用作IO的Bundle）中使用容器。</li>
+<li>您需要通过属于硬件的索引来访问容器（例如寄存器组register file）。</li>
+</ol>
+
+</div>
+</div>
+</div>
+<div class='cell border-box-sizing code_cell rendered'>
+<div class='input'>
+<div class='prompt input_prompt'>In&nbsp;[12]:</div>
+<div class='inner_cell'>
+    <div class='input_area'>
+<div class=' highlight hl-scala'><pre><span></span><span class='k'>class</span> <span class='nc'>MyManyDynamicElementVecFir</span><span class='o'>(</span><span class='n'>length</span><span class='k'>:</span> <span class='kt'>Int</span><span class='o'>)</span> <span class='k'>extends</span> <span class='nc'>Module</span> <span class='o'>{</span>
+  <span class='k'>val</span> <span class='n'>io</span> <span class='k'>=</span> <span class='nc'>IO</span><span class='o'>(</span><span class='k'>new</span> <span class='nc'>Bundle</span> <span class='o'>{</span>
+    <span class='k'>val</span> <span class='n'>in</span> <span class='k'>=</span> <span class='nc'>Input</span><span class='o'>(</span><span class='nc'>UInt</span><span class='o'>(</span><span class='mf'>8.</span><span class='n'>W</span><span class='o'>))</span>
+    <span class='k'>val</span> <span class='n'>out</span> <span class='k'>=</span> <span class='nc'>Output</span><span class='o'>(</span><span class='nc'>UInt</span><span class='o'>(</span><span class='mf'>8.</span><span class='n'>W</span><span class='o'>))</span>
+    <span class='k'>val</span> <span class='n'>consts</span> <span class='k'>=</span> <span class='nc'>Input</span><span class='o'>(</span><span class='nc'>Vec</span><span class='o'>(</span><span class='n'>length</span><span class='o'>,</span> <span class='nc'>UInt</span><span class='o'>(</span><span class='mf'>8.</span><span class='n'>W</span><span class='o'>)))</span>
+  <span class='o'>})</span>
+
+  <span class='c1'>// Reference solution</span>
+  <span class='k'>val</span> <span class='n'>regs</span> <span class='k'>=</span> <span class='nc'>RegInit</span><span class='o'>(</span><span class='nc'>VecInit</span><span class='o'>(</span><span class='nc'>Seq</span><span class='o'>.</span><span class='n'>fill</span><span class='o'>(</span><span class='n'>length</span> <span class='o'>-</span> <span class='mi'>1</span><span class='o'>)(</span><span class='mf'>0.</span><span class='n'>U</span><span class='o'>(</span><span class='mf'>8.</span><span class='n'>W</span><span class='o'>))))</span>
+  <span class='k'>for</span><span class='o'>(</span><span class='n'>i</span> <span class='k'>&lt;-</span> <span class='mi'>0</span> <span class='n'>until</span> <span class='n'>length</span> <span class='o'>-</span> <span class='mi'>1</span><span class='o'>)</span> <span class='o'>{</span>
+      <span class='k'>if</span><span class='o'>(</span><span class='n'>i</span> <span class='o'>==</span> <span class='mi'>0</span><span class='o'>)</span> <span class='n'>regs</span><span class='o'>(</span><span class='n'>i</span><span class='o'>)</span> <span class='o'>:=</span> <span class='n'>io</span><span class='o'>.</span><span class='n'>in</span>
+      <span class='k'>else</span>       <span class='n'>regs</span><span class='o'>(</span><span class='n'>i</span><span class='o'>)</span> <span class='o'>:=</span> <span class='n'>regs</span><span class='o'>(</span><span class='n'>i</span> <span class='o'>-</span> <span class='mi'>1</span><span class='o'>)</span>
+  <span class='o'>}</span>
+  
+  <span class='k'>val</span> <span class='n'>muls</span> <span class='k'>=</span> <span class='nc'>Wire</span><span class='o'>(</span><span class='nc'>Vec</span><span class='o'>(</span><span class='n'>length</span><span class='o'>,</span> <span class='nc'>UInt</span><span class='o'>(</span><span class='mf'>8.</span><span class='n'>W</span><span class='o'>)))</span>
+  <span class='k'>for</span><span class='o'>(</span><span class='n'>i</span> <span class='k'>&lt;-</span> <span class='mi'>0</span> <span class='n'>until</span> <span class='n'>length</span><span class='o'>)</span> <span class='o'>{</span>
+      <span class='k'>if</span><span class='o'>(</span><span class='n'>i</span> <span class='o'>==</span> <span class='mi'>0</span><span class='o'>)</span> <span class='n'>muls</span><span class='o'>(</span><span class='n'>i</span><span class='o'>)</span> <span class='o'>:=</span> <span class='n'>io</span><span class='o'>.</span><span class='n'>in</span> <span class='o'>*</span> <span class='n'>io</span><span class='o'>.</span><span class='n'>consts</span><span class='o'>(</span><span class='n'>i</span><span class='o'>)</span>
+      <span class='k'>else</span>       <span class='n'>muls</span><span class='o'>(</span><span class='n'>i</span><span class='o'>)</span> <span class='o'>:=</span> <span class='n'>regs</span><span class='o'>(</span><span class='n'>i</span> <span class='o'>-</span> <span class='mi'>1</span><span class='o'>)</span> <span class='o'>*</span> <span class='n'>io</span><span class='o'>.</span><span class='n'>consts</span><span class='o'>(</span><span class='n'>i</span><span class='o'>)</span>
+  <span class='o'>}</span>
+
+  <span class='k'>val</span> <span class='n'>scan</span> <span class='k'>=</span> <span class='nc'>Wire</span><span class='o'>(</span><span class='nc'>Vec</span><span class='o'>(</span><span class='n'>length</span><span class='o'>,</span> <span class='nc'>UInt</span><span class='o'>(</span><span class='mf'>8.</span><span class='n'>W</span><span class='o'>)))</span>
+  <span class='k'>for</span><span class='o'>(</span><span class='n'>i</span> <span class='k'>&lt;-</span> <span class='mi'>0</span> <span class='n'>until</span> <span class='n'>length</span><span class='o'>)</span> <span class='o'>{</span>
+      <span class='k'>if</span><span class='o'>(</span><span class='n'>i</span> <span class='o'>==</span> <span class='mi'>0</span><span class='o'>)</span> <span class='n'>scan</span><span class='o'>(</span><span class='n'>i</span><span class='o'>)</span> <span class='o'>:=</span> <span class='n'>muls</span><span class='o'>(</span><span class='n'>i</span><span class='o'>)</span>
+      <span class='k'>else</span> <span class='n'>scan</span><span class='o'>(</span><span class='n'>i</span><span class='o'>)</span> <span class='o'>:=</span> <span class='n'>muls</span><span class='o'>(</span><span class='n'>i</span><span class='o'>)</span> <span class='o'>+</span> <span class='n'>scan</span><span class='o'>(</span><span class='n'>i</span> <span class='o'>-</span> <span class='mi'>1</span><span class='o'>)</span>
+  <span class='o'>}</span>
+
+  <span class='n'>io</span><span class='o'>.</span><span class='n'>out</span> <span class='o'>:=</span> <span class='n'>scan</span><span class='o'>(</span><span class='n'>length</span> <span class='o'>-</span> <span class='mi'>1</span><span class='o'>)</span>
+<span class='o'>}</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class='output_wrapper'>
+<div class='output'>
+
+
+<div class='output_area'>
+
+    <div class='prompt output_prompt'>Out[12]:</div>
+
+
+
+
+<div class='output_text output_subarea output_execute_result'>
+<pre>defined <span class='ansi-green-fg'>class</span> <span class='ansi-cyan-fg'>MyManyDynamicElementVecFir</span></pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class='cell border-box-sizing code_cell rendered'>
+<div class='input'>
+<div class='prompt input_prompt'>In&nbsp;[13]:</div>
+<div class='inner_cell'>
+    <div class='input_area'>
+<div class=' highlight hl-scala'><pre><span></span><span class='k'>val</span> <span class='n'>goldenModel</span> <span class='k'>=</span> <span class='k'>new</span> <span class='nc'>ScalaFirFilter</span><span class='o'>(</span><span class='nc'>Seq</span><span class='o'>(</span><span class='mi'>1</span><span class='o'>,</span> <span class='mi'>1</span><span class='o'>,</span> <span class='mi'>1</span><span class='o'>,</span> <span class='mi'>1</span><span class='o'>))</span>
+
+<span class='nc'>Driver</span><span class='o'>(()</span> <span class='k'>=&gt;</span> <span class='k'>new</span> <span class='nc'>MyManyDynamicElementVecFir</span><span class='o'>(</span><span class='mi'>4</span><span class='o'>))</span> <span class='o'>{</span>
+  <span class='n'>c</span> <span class='k'>=&gt;</span> <span class='k'>new</span> <span class='nc'>PeekPokeTester</span><span class='o'>(</span><span class='n'>c</span><span class='o'>)</span> <span class='o'>{</span>
+    <span class='n'>poke</span><span class='o'>(</span><span class='n'>c</span><span class='o'>.</span><span class='n'>io</span><span class='o'>.</span><span class='n'>consts</span><span class='o'>(</span><span class='mi'>0</span><span class='o'>),</span> <span class='mi'>1</span><span class='o'>)</span>
+    <span class='n'>poke</span><span class='o'>(</span><span class='n'>c</span><span class='o'>.</span><span class='n'>io</span><span class='o'>.</span><span class='n'>consts</span><span class='o'>(</span><span class='mi'>1</span><span class='o'>),</span> <span class='mi'>1</span><span class='o'>)</span>
+    <span class='n'>poke</span><span class='o'>(</span><span class='n'>c</span><span class='o'>.</span><span class='n'>io</span><span class='o'>.</span><span class='n'>consts</span><span class='o'>(</span><span class='mi'>2</span><span class='o'>),</span> <span class='mi'>1</span><span class='o'>)</span>
+    <span class='n'>poke</span><span class='o'>(</span><span class='n'>c</span><span class='o'>.</span><span class='n'>io</span><span class='o'>.</span><span class='n'>consts</span><span class='o'>(</span><span class='mi'>3</span><span class='o'>),</span> <span class='mi'>1</span><span class='o'>)</span>
+    <span class='k'>for</span><span class='o'>(</span><span class='n'>i</span> <span class='k'>&lt;-</span> <span class='mi'>0</span> <span class='n'>until</span> <span class='mi'>100</span><span class='o'>)</span> <span class='o'>{</span>
+      <span class='k'>val</span> <span class='n'>input</span> <span class='k'>=</span> <span class='n'>scala</span><span class='o'>.</span><span class='n'>util</span><span class='o'>.</span><span class='nc'>Random</span><span class='o'>.</span><span class='n'>nextInt</span><span class='o'>(</span><span class='mi'>8</span><span class='o'>)</span>
+
+      <span class='k'>val</span> <span class='n'>goldenModelResult</span> <span class='k'>=</span> <span class='n'>goldenModel</span><span class='o'>.</span><span class='n'>poke</span><span class='o'>(</span><span class='n'>input</span><span class='o'>)</span>
+
+      <span class='n'>poke</span><span class='o'>(</span><span class='n'>c</span><span class='o'>.</span><span class='n'>io</span><span class='o'>.</span><span class='n'>in</span><span class='o'>,</span> <span class='n'>input</span><span class='o'>)</span>
+
+      <span class='n'>expect</span><span class='o'>(</span><span class='n'>c</span><span class='o'>.</span><span class='n'>io</span><span class='o'>.</span><span class='n'>out</span><span class='o'>,</span> <span class='n'>goldenModelResult</span><span class='o'>,</span> <span class='s'>s&quot;i </span><span class='si'>$i</span><span class='s'>, input </span><span class='si'>$input</span><span class='s'>, gm </span><span class='si'>$goldenModelResult</span><span class='s'>, </span><span class='si'>${</span><span class='n'>peek</span><span class='o'>(</span><span class='n'>c</span><span class='o'>.</span><span class='n'>io</span><span class='o'>.</span><span class='n'>out</span><span class='o'>)</span><span class='si'>}</span><span class='s'>&quot;</span><span class='o'>)</span>
+
+      <span class='n'>step</span><span class='o'>(</span><span class='mi'>1</span><span class='o'>)</span>
+    <span class='o'>}</span>
+  <span class='o'>}</span>
+<span class='o'>}</span>
+</pre></div>
+
+    </div>
+</div>
+</div>
+
+<div class='output_wrapper'>
+<div class='output'>
+
+
+<div class='output_area'>
+
+    <div class='prompt'></div>
+
+
+<div class='output_subarea output_stream output_stdout output_text'>
+<pre>[<span class='ansi-magenta-fg'>info</span>] [0.000] Elaborating design...
+[<span class='ansi-magenta-fg'>info</span>] [0.070] Done elaborating.
+Total FIRRTL Compile Time: 66.3 ms
+Total FIRRTL Compile Time: 42.8 ms
+End of dependency graph
+Circuit state created
+[<span class='ansi-magenta-fg'>info</span>] [0.000] SEED 1572488648836
+test cmd11HelperMyManyDynamicElementVecFir Success: 100 tests passed in 105 cycles taking 0.038679 seconds
+[<span class='ansi-magenta-fg'>info</span>] [0.037] RAN 100 CYCLES PASSED
+</pre>
+</div>
+</div>
+
+<div class='output_area'>
+
+    <div class='prompt output_prompt'>Out[13]:</div>
+
+
+
+
+<div class='output_text output_subarea output_execute_result'>
+<pre><span class='ansi-cyan-fg'>goldenModel</span>: <span class='ansi-green-fg'>ScalaFirFilter</span> = ammonite.$sess.cmd3$Helper$ScalaFirFilter@5a7fc4e0
+<span class='ansi-cyan-fg'>res12_1</span>: <span class='ansi-green-fg'>Boolean</span> = true</pre>
+</div>
+
+</div>
+
+</div>
+</div>
+
+</div>
+<div class='cell border-box-sizing text_cell rendered'><div class='prompt input_prompt'>
+</div><div class='inner_cell'>
+<div class='text_cell_render border-box-sizing rendered_html'>
+<p><span style='color:red'>**练习：32位RISC-V处理器**</span><br></p>
+<p>是处理器中重要的组成部分。
+寄存器组是可以通过多个读或写端口读取或写入的寄存器阵列。
+每个端口都包含一个地址和数据字段。</p>
+<p>定义了多个指令集的变体，其中最简单的变体称为RV32I。
+RV32I包含一个具有32个32位寄存器的寄存器阵列。
+<strong>无论您在索引0的位置写了什么，索引0处的寄存器（第一个寄存器）读取值始终为零</strong>（这是为了方便的使用0这个值）。</p>
+<p>这个练习为RV32I实现寄存器组（register file），它具有一个写入端口和若干个读取端口（读取端口的数目是参数）。
+仅在<code>wen</code>（写使能）被置上时才执行写操作。</p>
 
 </div>
 </div>
@@ -13834,17 +14282,61 @@ SUCCESS!!
 <div class='prompt input_prompt'>In&nbsp;[&nbsp;]:</div>
 <div class='inner_cell'>
     <div class='input_area'>
-<div class=' highlight hl-scala'><pre><span></span><span class='k'>def</span> <span class='n'>poly0</span><span class='o'>(</span><span class='n'>x</span><span class='k'>:</span> <span class='kt'>Int</span><span class='o'>)</span><span class='k'>:</span> <span class='kt'>Int</span> <span class='o'>=</span> <span class='o'>???</span>
-<span class='k'>def</span> <span class='n'>poly1</span><span class='o'>(</span><span class='n'>x</span><span class='k'>:</span> <span class='kt'>Int</span><span class='o'>)</span><span class='k'>:</span> <span class='kt'>Int</span> <span class='o'>=</span> <span class='o'>???</span>
-<span class='k'>def</span> <span class='n'>poly2</span><span class='o'>(</span><span class='n'>x</span><span class='k'>:</span> <span class='kt'>Int</span><span class='o'>)</span><span class='k'>:</span> <span class='kt'>Int</span> <span class='o'>=</span> <span class='o'>???</span>
+<div class=' highlight hl-scala'><pre><span></span><span class='k'>class</span> <span class='nc'>RegisterFile</span><span class='o'>(</span><span class='n'>readPorts</span><span class='k'>:</span> <span class='kt'>Int</span><span class='o'>)</span> <span class='k'>extends</span> <span class='nc'>Module</span> <span class='o'>{</span>
+    <span class='n'>require</span><span class='o'>(</span><span class='n'>readPorts</span> <span class='o'>&gt;=</span> <span class='mi'>0</span><span class='o'>)</span>
+    <span class='k'>val</span> <span class='n'>io</span> <span class='k'>=</span> <span class='nc'>IO</span><span class='o'>(</span><span class='k'>new</span> <span class='nc'>Bundle</span> <span class='o'>{</span>
+        <span class='k'>val</span> <span class='n'>wen</span>   <span class='k'>=</span> <span class='nc'>Input</span><span class='o'>(</span><span class='nc'>Bool</span><span class='o'>())</span>
+        <span class='k'>val</span> <span class='n'>waddr</span> <span class='k'>=</span> <span class='nc'>Input</span><span class='o'>(</span><span class='nc'>UInt</span><span class='o'>(</span><span class='mf'>5.</span><span class='n'>W</span><span class='o'>))</span>
+        <span class='k'>val</span> <span class='n'>wdata</span> <span class='k'>=</span> <span class='nc'>Input</span><span class='o'>(</span><span class='nc'>UInt</span><span class='o'>(</span><span class='mf'>32.</span><span class='n'>W</span><span class='o'>))</span>
+        <span class='k'>val</span> <span class='n'>raddr</span> <span class='k'>=</span> <span class='nc'>Input</span><span class='o'>(</span><span class='nc'>Vec</span><span class='o'>(</span><span class='n'>readPorts</span><span class='o'>,</span> <span class='nc'>UInt</span><span class='o'>(</span><span class='mf'>5.</span><span class='n'>W</span><span class='o'>)))</span>
+        <span class='k'>val</span> <span class='n'>rdata</span> <span class='k'>=</span> <span class='nc'>Output</span><span class='o'>(</span><span class='nc'>Vec</span><span class='o'>(</span><span class='n'>readPorts</span><span class='o'>,</span> <span class='nc'>UInt</span><span class='o'>(</span><span class='mf'>32.</span><span class='n'>W</span><span class='o'>)))</span>
+    <span class='o'>})</span>
+    
+    <span class='c1'>// 包含UInt类型向量的寄存器</span>
+    <span class='k'>val</span> <span class='n'>reg</span> <span class='k'>=</span> <span class='nc'>RegInit</span><span class='o'>(</span><span class='nc'>VecInit</span><span class='o'>(</span><span class='nc'>Seq</span><span class='o'>.</span><span class='n'>fill</span><span class='o'>(</span><span class='mi'>32</span><span class='o'>)(</span><span class='mf'>0.</span><span class='n'>U</span><span class='o'>(</span><span class='mf'>32.</span><span class='n'>W</span><span class='o'>))))</span>
 
-<span class='n'>assert</span><span class='o'>(</span><span class='n'>poly0</span><span class='o'>(</span><span class='mi'>0</span><span class='o'>)</span> <span class='o'>==</span> <span class='mi'>1</span><span class='o'>)</span>
-<span class='n'>assert</span><span class='o'>(</span><span class='n'>poly1</span><span class='o'>(</span><span class='mi'>0</span><span class='o'>)</span> <span class='o'>==</span> <span class='mi'>3</span><span class='o'>)</span>
-<span class='n'>assert</span><span class='o'>(</span><span class='n'>poly2</span><span class='o'>(</span><span class='mi'>0</span><span class='o'>)</span> <span class='o'>==</span> <span class='o'>-</span><span class='mi'>5</span><span class='o'>)</span>
+<span class='o'>}</span>
+</pre></div>
 
-<span class='n'>assert</span><span class='o'>(</span><span class='n'>poly0</span><span class='o'>(</span><span class='mi'>1</span><span class='o'>)</span> <span class='o'>==</span> <span class='mi'>0</span><span class='o'>)</span>
-<span class='n'>assert</span><span class='o'>(</span><span class='n'>poly1</span><span class='o'>(</span><span class='mi'>1</span><span class='o'>)</span> <span class='o'>==</span> <span class='mi'>11</span><span class='o'>)</span>
-<span class='n'>assert</span><span class='o'>(</span><span class='n'>poly2</span><span class='o'>(</span><span class='mi'>1</span><span class='o'>)</span> <span class='o'>==</span> <span class='o'>-</span><span class='mi'>11</span><span class='o'>)</span>
+    </div>
+</div>
+</div>
+
+</div>
+<div class='cell border-box-sizing code_cell rendered'>
+<div class='input'>
+<div class='prompt input_prompt'>In&nbsp;[&nbsp;]:</div>
+<div class='inner_cell'>
+    <div class='input_area'>
+<div class=' highlight hl-scala'><pre><span></span><span class='n'>chisel3</span><span class='o'>.</span><span class='n'>iotesters</span><span class='o'>.</span><span class='nc'>Driver</span><span class='o'>(()</span> <span class='k'>=&gt;</span> <span class='k'>new</span> <span class='nc'>RegisterFile</span><span class='o'>(</span><span class='mi'>2</span><span class='o'>)</span> <span class='o'>)</span> <span class='o'>{</span> <span class='n'>c</span> <span class='k'>=&gt;</span> <span class='k'>new</span> <span class='nc'>PeekPokeTester</span><span class='o'>(</span><span class='n'>c</span><span class='o'>)</span> <span class='o'>{</span>
+    <span class='k'>def</span> <span class='n'>readExpect</span><span class='o'>(</span><span class='n'>addr</span><span class='k'>:</span> <span class='kt'>Int</span><span class='o'>,</span> <span class='n'>value</span><span class='k'>:</span> <span class='kt'>Int</span><span class='o'>,</span> <span class='n'>port</span><span class='k'>:</span> <span class='kt'>Int</span> <span class='o'>=</span> <span class='mi'>0</span><span class='o'>)</span><span class='k'>:</span> <span class='kt'>Unit</span> <span class='o'>=</span> <span class='o'>{</span>
+        <span class='n'>poke</span><span class='o'>(</span><span class='n'>c</span><span class='o'>.</span><span class='n'>io</span><span class='o'>.</span><span class='n'>raddr</span><span class='o'>(</span><span class='n'>port</span><span class='o'>),</span> <span class='n'>addr</span><span class='o'>)</span>
+        <span class='n'>expect</span><span class='o'>(</span><span class='n'>c</span><span class='o'>.</span><span class='n'>io</span><span class='o'>.</span><span class='n'>rdata</span><span class='o'>(</span><span class='n'>port</span><span class='o'>),</span> <span class='n'>value</span><span class='o'>)</span>
+    <span class='o'>}</span>
+    <span class='k'>def</span> <span class='n'>write</span><span class='o'>(</span><span class='n'>addr</span><span class='k'>:</span> <span class='kt'>Int</span><span class='o'>,</span> <span class='n'>value</span><span class='k'>:</span> <span class='kt'>Int</span><span class='o'>)</span><span class='k'>:</span> <span class='kt'>Unit</span> <span class='o'>=</span> <span class='o'>{</span>
+        <span class='n'>poke</span><span class='o'>(</span><span class='n'>c</span><span class='o'>.</span><span class='n'>io</span><span class='o'>.</span><span class='n'>wen</span><span class='o'>,</span> <span class='mi'>1</span><span class='o'>)</span>
+        <span class='n'>poke</span><span class='o'>(</span><span class='n'>c</span><span class='o'>.</span><span class='n'>io</span><span class='o'>.</span><span class='n'>wdata</span><span class='o'>,</span> <span class='n'>value</span><span class='o'>)</span>
+        <span class='n'>poke</span><span class='o'>(</span><span class='n'>c</span><span class='o'>.</span><span class='n'>io</span><span class='o'>.</span><span class='n'>waddr</span><span class='o'>,</span> <span class='n'>addr</span><span class='o'>)</span>
+        <span class='n'>step</span><span class='o'>(</span><span class='mi'>1</span><span class='o'>)</span>
+        <span class='n'>poke</span><span class='o'>(</span><span class='n'>c</span><span class='o'>.</span><span class='n'>io</span><span class='o'>.</span><span class='n'>wen</span><span class='o'>,</span> <span class='mi'>0</span><span class='o'>)</span>
+    <span class='o'>}</span>
+    <span class='c1'>// 初始化的时候所有东西都应该是 0</span>
+    <span class='k'>for</span> <span class='o'>(</span><span class='n'>i</span> <span class='k'>&lt;-</span> <span class='mi'>0</span> <span class='n'>until</span> <span class='mi'>32</span><span class='o'>)</span> <span class='o'>{</span>
+        <span class='n'>readExpect</span><span class='o'>(</span><span class='n'>i</span><span class='o'>,</span> <span class='mi'>0</span><span class='o'>,</span> <span class='n'>port</span> <span class='k'>=</span> <span class='mi'>0</span><span class='o'>)</span>
+        <span class='n'>readExpect</span><span class='o'>(</span><span class='n'>i</span><span class='o'>,</span> <span class='mi'>0</span><span class='o'>,</span> <span class='n'>port</span> <span class='k'>=</span> <span class='mi'>1</span><span class='o'>)</span>
+    <span class='o'>}</span>
+
+    <span class='c1'>// 写入 5 * addr + 3</span>
+    <span class='k'>for</span> <span class='o'>(</span><span class='n'>i</span> <span class='k'>&lt;-</span> <span class='mi'>0</span> <span class='n'>until</span> <span class='mi'>32</span><span class='o'>)</span> <span class='o'>{</span>
+        <span class='n'>write</span><span class='o'>(</span><span class='n'>i</span><span class='o'>,</span> <span class='mi'>5</span> <span class='o'>*</span> <span class='n'>i</span> <span class='o'>+</span> <span class='mi'>3</span><span class='o'>)</span>
+    <span class='o'>}</span>
+
+    <span class='c1'>// 检查上面的写入是否成功</span>
+    <span class='k'>for</span> <span class='o'>(</span><span class='n'>i</span> <span class='k'>&lt;-</span> <span class='mi'>0</span> <span class='n'>until</span> <span class='mi'>32</span><span class='o'>)</span> <span class='o'>{</span>
+        <span class='n'>readExpect</span><span class='o'>(</span><span class='n'>i</span><span class='o'>,</span> <span class='k'>if</span> <span class='o'>(</span><span class='n'>i</span> <span class='o'>==</span> <span class='mi'>0</span><span class='o'>)</span> <span class='mi'>0</span> <span class='k'>else</span> <span class='mi'>5</span> <span class='o'>*</span> <span class='n'>i</span> <span class='o'>+</span> <span class='mi'>3</span><span class='o'>,</span> <span class='n'>port</span> <span class='k'>=</span> <span class='n'>i</span> <span class='o'>%</span> <span class='mi'>2</span><span class='o'>)</span>
+    <span class='o'>}</span>
+
+<span class='o'>}}</span>
 </pre></div>
 
     </div>
@@ -13860,275 +14352,17 @@ SUCCESS!!
 <label for='check-1'><strong>答案</strong></label>
 <article>
 <pre style='background-color:#f7f7f7'>
-def poly0(x: Int): Int = x\*x - 2\*x + 1
-def poly1(x: Int): Int = 2\*x\*x + 6\*x + 3
-def poly2(x: Int): Int = 4\*x\*x - 10\*x - 5
-</pre></article></div></section></div>
-</div>
-</div>
-</div>
-<div class='cell border-box-sizing text_cell rendered'><div class='prompt input_prompt'>
-</div><div class='inner_cell'>
-<div class='text_cell_render border-box-sizing rendered_html'>
-<p>为了使测试更容易，让我们创建一个类似于后面要完成的硬件模块的函数。使用Scala的<code>if</code>语句并根据<code>select</code>输入来选择多项式。</p>
+    when (io.wen) {
+        reg(io.waddr) := io.wdata
+    }
+    for (i &lt;- 0 until readPorts) {
+        when (io.raddr(i) === 0.U) {
+            io.rdata(i) := 0.U
+        } .otherwise {
+            io.rdata(i) := reg(io.raddr(i))
+        }
+    }
 
-</div>
-</div>
-</div>
-<div class='cell border-box-sizing code_cell rendered'>
-<div class='input'>
-<div class='prompt input_prompt'>In&nbsp;[&nbsp;]:</div>
-<div class='inner_cell'>
-    <div class='input_area'>
-<div class=' highlight hl-scala'><pre><span></span><span class='k'>def</span> <span class='n'>poly</span><span class='o'>(</span><span class='n'>select</span><span class='k'>:</span> <span class='kt'>Int</span><span class='o'>,</span> <span class='n'>x</span><span class='k'>:</span> <span class='kt'>Int</span><span class='o'>)</span><span class='k'>:</span> <span class='kt'>Int</span> <span class='o'>=</span> <span class='o'>{</span>
-  <span class='o'>???</span>
-<span class='o'>}</span>
-
-<span class='n'>assert</span><span class='o'>(</span><span class='n'>poly</span><span class='o'>(</span><span class='mi'>1</span><span class='o'>,</span> <span class='mi'>0</span><span class='o'>)</span> <span class='o'>==</span> <span class='mi'>3</span><span class='o'>)</span>
-<span class='n'>assert</span><span class='o'>(</span><span class='n'>poly</span><span class='o'>(</span><span class='mi'>1</span><span class='o'>,</span> <span class='mi'>1</span><span class='o'>)</span> <span class='o'>==</span> <span class='mi'>11</span><span class='o'>)</span>
-<span class='n'>assert</span><span class='o'>(</span><span class='n'>poly</span><span class='o'>(</span><span class='mi'>2</span><span class='o'>,</span> <span class='mi'>1</span><span class='o'>)</span> <span class='o'>==</span> <span class='o'>-</span><span class='mi'>11</span><span class='o'>)</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class='cell border-box-sizing text_cell rendered'><div class='prompt input_prompt'>
-</div><div class='inner_cell'>
-<div class='text_cell_render border-box-sizing rendered_html'>
-<div id='container'><section id='accordion'><div>
-<input type='checkbox' id='check-2' />
-<label for='check-2'><strong>答案</strong></label>
-<article>
-<pre style='background-color:#f7f7f7'>
-def poly(select: Int, x: Int): Int = {
-  if(select == 0) {
-    poly0(x)
-  }
-  else if(select == 1) {
-    poly1(x)
-  }
-  else {
-    poly2(x)
-  }
-}
-</pre></article></div></section></div>
-</div>
-</div>
-</div>
-<div class='cell border-box-sizing text_cell rendered'><div class='prompt input_prompt'>
-</div><div class='inner_cell'>
-<div class='text_cell_render border-box-sizing rendered_html'>
-<p>看起来这个测试计算的值是正确的。现在使用以下面的代码为模板来实现您的电路：</p>
-
-</div>
-</div>
-</div>
-<div class='cell border-box-sizing code_cell rendered'>
-<div class='input'>
-<div class='prompt input_prompt'>In&nbsp;[&nbsp;]:</div>
-<div class='inner_cell'>
-    <div class='input_area'>
-<div class=' highlight hl-scala'><pre><span></span><span class='c1'>// 计算多项式</span>
-<span class='k'>class</span> <span class='nc'>Polynomial</span> <span class='k'>extends</span> <span class='nc'>Module</span> <span class='o'>{</span>
-  <span class='k'>val</span> <span class='n'>io</span> <span class='k'>=</span> <span class='nc'>IO</span><span class='o'>(</span><span class='k'>new</span> <span class='nc'>Bundle</span> <span class='o'>{</span>
-    <span class='k'>val</span> <span class='n'>select</span> <span class='k'>=</span> <span class='nc'>Input</span><span class='o'>(</span><span class='nc'>UInt</span><span class='o'>(</span><span class='mf'>2.</span><span class='n'>W</span><span class='o'>))</span>
-    <span class='k'>val</span> <span class='n'>x</span> <span class='k'>=</span> <span class='nc'>Input</span><span class='o'>(</span><span class='nc'>SInt</span><span class='o'>(</span><span class='mf'>32.</span><span class='n'>W</span><span class='o'>))</span>
-    <span class='k'>val</span> <span class='n'>fOfX</span> <span class='k'>=</span> <span class='nc'>Output</span><span class='o'>(</span><span class='nc'>SInt</span><span class='o'>(</span><span class='mf'>32.</span><span class='n'>W</span><span class='o'>))</span>
-  <span class='o'>})</span>
-    
-  <span class='k'>val</span> <span class='n'>result</span> <span class='k'>=</span> <span class='nc'>Wire</span><span class='o'>(</span><span class='nc'>SInt</span><span class='o'>(</span><span class='mf'>32.</span><span class='n'>W</span><span class='o'>))</span>  
-  <span class='k'>val</span> <span class='n'>square</span> <span class='k'>=</span> <span class='nc'>Wire</span><span class='o'>(</span><span class='nc'>SInt</span><span class='o'>(</span><span class='mf'>32.</span><span class='n'>W</span><span class='o'>))</span>  
-  
-  <span class='o'>???</span>
-
-  <span class='n'>io</span><span class='o'>.</span><span class='n'>fOfX</span> <span class='o'>:=</span> <span class='n'>result</span>  
-<span class='o'>}</span>
-
-<span class='c1'>// 检查计算的正确性</span>
-<span class='k'>class</span> <span class='nc'>PolynomialTester</span><span class='o'>(</span><span class='n'>c</span><span class='k'>:</span> <span class='kt'>Polynomial</span><span class='o'>)</span> <span class='k'>extends</span> <span class='nc'>PeekPokeTester</span><span class='o'>(</span><span class='n'>c</span><span class='o'>)</span> <span class='o'>{</span>
-  <span class='k'>for</span><span class='o'>(</span><span class='n'>x</span> <span class='k'>&lt;-</span> <span class='mi'>0</span> <span class='n'>to</span> <span class='mi'>20</span><span class='o'>)</span> <span class='o'>{</span>
-    <span class='k'>for</span><span class='o'>(</span><span class='n'>select</span> <span class='k'>&lt;-</span> <span class='mi'>0</span> <span class='n'>to</span> <span class='mi'>2</span><span class='o'>)</span> <span class='o'>{</span>
-      <span class='n'>poke</span><span class='o'>(</span><span class='n'>c</span><span class='o'>.</span><span class='n'>io</span><span class='o'>.</span><span class='n'>select</span><span class='o'>,</span> <span class='n'>select</span><span class='o'>)</span>
-      <span class='n'>poke</span><span class='o'>(</span><span class='n'>c</span><span class='o'>.</span><span class='n'>io</span><span class='o'>.</span><span class='n'>x</span><span class='o'>,</span> <span class='n'>x</span><span class='o'>)</span>
-      <span class='n'>expect</span><span class='o'>(</span><span class='n'>c</span><span class='o'>.</span><span class='n'>io</span><span class='o'>.</span><span class='n'>fOfX</span><span class='o'>,</span> <span class='n'>poly</span><span class='o'>(</span><span class='n'>select</span><span class='o'>,</span> <span class='n'>x</span><span class='o'>))</span>
-    <span class='o'>}</span>
-  <span class='o'>}</span>
-<span class='o'>}</span>
-
-<span class='c1'>// 测试多项式</span>
-<span class='k'>val</span> <span class='n'>works</span> <span class='k'>=</span> <span class='nc'>Driver</span><span class='o'>(()</span> <span class='k'>=&gt;</span> <span class='k'>new</span> <span class='nc'>Polynomial</span><span class='o'>)</span> <span class='o'>{</span>
-  <span class='n'>c</span> <span class='k'>=&gt;</span> <span class='k'>new</span> <span class='nc'>PolynomialTester</span><span class='o'>(</span><span class='n'>c</span><span class='o'>)</span>
-<span class='o'>}</span>
-<span class='n'>assert</span><span class='o'>(</span><span class='n'>works</span><span class='o'>)</span> <span class='c1'>// Scala 代码：如果 works == false，这里会抛出异常</span>
-<span class='n'>println</span><span class='o'>(</span><span class='s'>&quot;SUCCESS!!&quot;</span><span class='o'>)</span> <span class='c1'>// Scala 代码：到这里测试就通过了</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class='cell border-box-sizing text_cell rendered'><div class='prompt input_prompt'>
-</div><div class='inner_cell'>
-<div class='text_cell_render border-box-sizing rendered_html'>
-<div id='container'><section id='accordion'><div>
-<input type='checkbox' id='check-3' />
-<label for='check-3'><strong>答案</strong></label>
-<article>
-<pre style='background-color:#f7f7f7'>
-  square := io.x \* io.x
-  when(io.select === 0.U) {
-    result := (square - (2.S \* io.x)) + 1.S
-  }.elsewhen(io.select === 1.U) {
-    result := (2.S \* square) + (6.S \* io.x) + 3.S
-  }.otherwise {
-    result := (4.S \* square) - (10.S \* io.x) - 5.S
-  }
-</pre></article></div></section></div>
-</div>
-</div>
-</div>
-<div class='cell border-box-sizing text_cell rendered'><div class='prompt input_prompt'>
-</div><div class='inner_cell'>
-<div class='text_cell_render border-box-sizing rendered_html'>
-<p><span style='color:red'>**练习：有限状态机**</span><br></p>
-<p>使用卡诺图（Karnaugh map）来优化状态机的逻辑非常繁琐，这可以通过综合工具来解决。并且它还会产生不直观且难以理解的代码。因此，我们将使用Chisel控制流和最后的连接语义编写一个更简单易懂的。</p>
-<p>研究生们在他们的学习生涯中会经历四种状态：空闲，编码，写作和毕业。这些状态根据三个输入来进行转换：咖啡，他们提出的想法，来自导师的压力。一旦他们毕业，他们就会回到空闲状态。下面的FSM图显示了这些状态和状态之间的转换。任何未标记的转换（即，当没有输入时）会将研究生返回到空闲状态而不是保持在当前状态。输入优先级是 咖啡（coffee） &gt; 想法（idea） &gt; 压力（pressure），所以如果处于空闲状态并同时接收到咖啡和压力时，研究生将转换到编码（Coding）状态。</p>
-<p><img src='images/fsm.png' width='500' /></p>
-<p>首先，我们将构建一个模型来测试我们的硬件。在下面的代码中完成我们的状态机的功能。它有四个输入，输出是下一个状态。状态图已经提供了，您可以通过类似这样<code>states('grad')</code>来访问它。</p>
-
-</div>
-</div>
-</div>
-<div class='cell border-box-sizing code_cell rendered'>
-<div class='input'>
-<div class='prompt input_prompt'>In&nbsp;[&nbsp;]:</div>
-<div class='inner_cell'>
-    <div class='input_area'>
-<div class=' highlight hl-scala'><pre><span></span><span class='c1'>// 状态图</span>
-<span class='k'>def</span> <span class='n'>states</span> <span class='k'>=</span> <span class='nc'>Map</span><span class='o'>(</span><span class='s'>&quot;idle&quot;</span> <span class='o'>-&gt;</span> <span class='mi'>0</span><span class='o'>,</span> <span class='s'>&quot;coding&quot;</span> <span class='o'>-&gt;</span> <span class='mi'>1</span><span class='o'>,</span> <span class='s'>&quot;writing&quot;</span> <span class='o'>-&gt;</span> <span class='mi'>2</span><span class='o'>,</span> <span class='s'>&quot;grad&quot;</span> <span class='o'>-&gt;</span> <span class='mi'>3</span><span class='o'>)</span>
-
-<span class='c1'>// 生活就是由一堆问号构成</span>
-<span class='k'>def</span> <span class='n'>gradLife</span> <span class='o'>(</span><span class='n'>state</span><span class='k'>:</span> <span class='kt'>Int</span><span class='o'>,</span> <span class='n'>coffee</span><span class='k'>:</span> <span class='kt'>Boolean</span><span class='o'>,</span> <span class='n'>idea</span><span class='k'>:</span> <span class='kt'>Boolean</span><span class='o'>,</span> <span class='n'>pressure</span><span class='k'>:</span> <span class='kt'>Boolean</span><span class='o'>)</span><span class='k'>:</span> <span class='kt'>Int</span> <span class='o'>=</span> <span class='o'>{</span>
-  <span class='k'>var</span> <span class='n'>nextState</span> <span class='k'>=</span> <span class='n'>states</span><span class='o'>(</span><span class='s'>&quot;idle&quot;</span><span class='o'>)</span>
-  <span class='o'>???</span>
-  <span class='n'>nextState</span>
-<span class='o'>}</span>
-
-<span class='c1'>// 一些完整性测试</span>
-<span class='o'>(</span><span class='mi'>0</span> <span class='n'>until</span> <span class='n'>states</span><span class='o'>.</span><span class='n'>size</span><span class='o'>).</span><span class='n'>foreach</span><span class='o'>{</span> <span class='n'>state</span> <span class='k'>=&gt;</span> <span class='n'>assert</span><span class='o'>(</span><span class='n'>gradLife</span><span class='o'>(</span><span class='n'>state</span><span class='o'>,</span> <span class='kc'>false</span><span class='o'>,</span> <span class='kc'>false</span><span class='o'>,</span> <span class='kc'>false</span><span class='o'>)</span> <span class='o'>==</span> <span class='n'>states</span><span class='o'>(</span><span class='s'>&quot;idle&quot;</span><span class='o'>))</span> <span class='o'>}</span>
-<span class='n'>assert</span><span class='o'>(</span><span class='n'>gradLife</span><span class='o'>(</span><span class='n'>states</span><span class='o'>(</span><span class='s'>&quot;writing&quot;</span><span class='o'>),</span> <span class='kc'>true</span><span class='o'>,</span> <span class='kc'>false</span><span class='o'>,</span> <span class='kc'>true</span><span class='o'>)</span> <span class='o'>==</span> <span class='n'>states</span><span class='o'>(</span><span class='s'>&quot;writing&quot;</span><span class='o'>))</span>
-<span class='n'>assert</span><span class='o'>(</span><span class='n'>gradLife</span><span class='o'>(</span><span class='n'>states</span><span class='o'>(</span><span class='s'>&quot;idle&quot;</span><span class='o'>),</span> <span class='kc'>true</span><span class='o'>,</span> <span class='kc'>true</span><span class='o'>,</span> <span class='kc'>true</span><span class='o'>)</span> <span class='o'>==</span> <span class='n'>states</span><span class='o'>(</span><span class='s'>&quot;coding&quot;</span><span class='o'>))</span>
-<span class='n'>assert</span><span class='o'>(</span><span class='n'>gradLife</span><span class='o'>(</span><span class='n'>states</span><span class='o'>(</span><span class='s'>&quot;idle&quot;</span><span class='o'>),</span> <span class='kc'>false</span><span class='o'>,</span> <span class='kc'>true</span><span class='o'>,</span> <span class='kc'>true</span><span class='o'>)</span> <span class='o'>==</span> <span class='n'>states</span><span class='o'>(</span><span class='s'>&quot;idle&quot;</span><span class='o'>))</span>
-<span class='n'>assert</span><span class='o'>(</span><span class='n'>gradLife</span><span class='o'>(</span><span class='n'>states</span><span class='o'>(</span><span class='s'>&quot;grad&quot;</span><span class='o'>),</span> <span class='kc'>false</span><span class='o'>,</span> <span class='kc'>false</span><span class='o'>,</span> <span class='kc'>false</span><span class='o'>)</span> <span class='o'>==</span> <span class='n'>states</span><span class='o'>(</span><span class='s'>&quot;idle&quot;</span><span class='o'>))</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class='cell border-box-sizing text_cell rendered'><div class='prompt input_prompt'>
-</div><div class='inner_cell'>
-<div class='text_cell_render border-box-sizing rendered_html'>
-<div id='container'><section id='accordion'><div>
-<input type='checkbox' id='check-4' />
-<label for='check-4'><strong>答案</strong></label>
-<article>
-<pre style='background-color:#f7f7f7'>
-  if (state == states('idle')) {
-    if      (coffee) { nextState = states('coding') }
-    else if (idea) { nextState = states('idle') }
-    else if (pressure) { nextState = states('writing') }
-  } else if (state == states('coding')) {
-    if      (coffee) { nextState = states('coding') } 
-    else if (idea || pressure) { nextState = states('writing') }
-  } else if (state == states('writing')) {
-    if      (coffee || idea) { nextState = states('writing') }
-    else if (pressure) { nextState = states('grad') }
-  }
-</pre></article></div></section></div>
-</div>
-</div>
-</div>
-<div class='cell border-box-sizing text_cell rendered'><div class='prompt input_prompt'>
-</div><div class='inner_cell'>
-<div class='text_cell_render border-box-sizing rendered_html'>
-<p>由于我们尚未学习时序逻辑，当前状态是模块的输入，而下一个状态是模块的输出，就像之前的<code>gradLife</code>函数一样。现在用让我们用Chisel来实现这个状态机，并让它通过测试。 Chisel为我们提供了一个方便的状态映射函数（来实现状态的值和名称之间的映射），称为<code>Enum</code>。要使用这些状态，请将它们视为类似<code>UInt</code>的字面值（literal）。记住，硬件相等使用的是三个等号！</p>
-
-</div>
-</div>
-</div>
-<div class='cell border-box-sizing code_cell rendered'>
-<div class='input'>
-<div class='prompt input_prompt'>In&nbsp;[&nbsp;]:</div>
-<div class='inner_cell'>
-    <div class='input_area'>
-<div class=' highlight hl-scala'><pre><span></span><span class='c1'>// 生活更艰难了</span>
-<span class='k'>class</span> <span class='nc'>GradLife</span> <span class='k'>extends</span> <span class='nc'>Module</span> <span class='o'>{</span>
-  <span class='k'>val</span> <span class='n'>io</span> <span class='k'>=</span> <span class='nc'>IO</span><span class='o'>(</span><span class='k'>new</span> <span class='nc'>Bundle</span> <span class='o'>{</span>
-    <span class='k'>val</span> <span class='n'>state</span> <span class='k'>=</span> <span class='nc'>Input</span><span class='o'>(</span><span class='nc'>UInt</span><span class='o'>(</span><span class='mf'>2.</span><span class='n'>W</span><span class='o'>))</span>
-    <span class='k'>val</span> <span class='n'>coffee</span> <span class='k'>=</span> <span class='nc'>Input</span><span class='o'>(</span><span class='nc'>Bool</span><span class='o'>())</span>
-    <span class='k'>val</span> <span class='n'>idea</span> <span class='k'>=</span> <span class='nc'>Input</span><span class='o'>(</span><span class='nc'>Bool</span><span class='o'>())</span>
-    <span class='k'>val</span> <span class='n'>pressure</span> <span class='k'>=</span> <span class='nc'>Input</span><span class='o'>(</span><span class='nc'>Bool</span><span class='o'>())</span>
-    <span class='k'>val</span> <span class='n'>nextState</span> <span class='k'>=</span> <span class='nc'>Output</span><span class='o'>(</span><span class='nc'>UInt</span><span class='o'>(</span><span class='mf'>2.</span><span class='n'>W</span><span class='o'>))</span>
-  <span class='o'>})</span>
-    
-  <span class='k'>val</span> <span class='n'>idle</span> <span class='o'>::</span> <span class='n'>coding</span> <span class='o'>::</span> <span class='n'>writing</span> <span class='o'>::</span> <span class='n'>grad</span> <span class='o'>::</span> <span class='nc'>Nil</span> <span class='k'>=</span> <span class='nc'>Enum</span><span class='o'>(</span><span class='mi'>4</span><span class='o'>)</span>
-  
-  <span class='n'>io</span><span class='o'>.</span><span class='n'>nextState</span> <span class='o'>:=</span> <span class='n'>idle</span>
-  <span class='o'>???</span>
-<span class='o'>}</span>
-
-<span class='c1'>// 检查硬件和软件模型一致</span>
-<span class='k'>class</span> <span class='nc'>GradLifeSim</span><span class='o'>(</span><span class='n'>c</span><span class='k'>:</span> <span class='kt'>GradLife</span><span class='o'>)</span> <span class='k'>extends</span> <span class='nc'>PeekPokeTester</span><span class='o'>(</span><span class='n'>c</span><span class='o'>)</span> <span class='o'>{</span>
-  <span class='k'>for</span> <span class='o'>(</span><span class='n'>state</span> <span class='k'>&lt;-</span> <span class='mi'>0</span> <span class='n'>to</span> <span class='mi'>3</span><span class='o'>)</span> <span class='o'>{</span>
-    <span class='k'>for</span> <span class='o'>(</span><span class='n'>coffee</span> <span class='k'>&lt;-</span> <span class='nc'>List</span><span class='o'>(</span><span class='kc'>true</span><span class='o'>,</span> <span class='kc'>false</span><span class='o'>))</span> <span class='o'>{</span>
-      <span class='k'>for</span> <span class='o'>(</span><span class='n'>idea</span> <span class='k'>&lt;-</span> <span class='nc'>List</span><span class='o'>(</span><span class='kc'>true</span><span class='o'>,</span> <span class='kc'>false</span><span class='o'>))</span> <span class='o'>{</span>
-        <span class='k'>for</span> <span class='o'>(</span><span class='n'>pressure</span> <span class='k'>&lt;-</span> <span class='nc'>List</span><span class='o'>(</span><span class='kc'>true</span><span class='o'>,</span> <span class='kc'>false</span><span class='o'>))</span> <span class='o'>{</span>
-          <span class='n'>poke</span><span class='o'>(</span><span class='n'>c</span><span class='o'>.</span><span class='n'>io</span><span class='o'>.</span><span class='n'>state</span><span class='o'>,</span> <span class='n'>state</span><span class='o'>)</span>
-          <span class='n'>poke</span><span class='o'>(</span><span class='n'>c</span><span class='o'>.</span><span class='n'>io</span><span class='o'>.</span><span class='n'>coffee</span><span class='o'>,</span> <span class='n'>coffee</span><span class='o'>)</span>
-          <span class='n'>poke</span><span class='o'>(</span><span class='n'>c</span><span class='o'>.</span><span class='n'>io</span><span class='o'>.</span><span class='n'>idea</span><span class='o'>,</span> <span class='n'>idea</span><span class='o'>)</span>
-          <span class='n'>poke</span><span class='o'>(</span><span class='n'>c</span><span class='o'>.</span><span class='n'>io</span><span class='o'>.</span><span class='n'>pressure</span><span class='o'>,</span> <span class='n'>pressure</span><span class='o'>)</span>
-          <span class='n'>expect</span><span class='o'>(</span><span class='n'>c</span><span class='o'>.</span><span class='n'>io</span><span class='o'>.</span><span class='n'>nextState</span><span class='o'>,</span> <span class='n'>gradLife</span><span class='o'>(</span><span class='n'>state</span><span class='o'>,</span> <span class='n'>coffee</span><span class='o'>,</span> <span class='n'>idea</span><span class='o'>,</span> <span class='n'>pressure</span><span class='o'>))</span>
-        <span class='o'>}</span>
-      <span class='o'>}</span>
-    <span class='o'>}</span>
-  <span class='o'>}</span>
-<span class='o'>}</span>
-
-<span class='c1'>// 测试</span>
-<span class='k'>val</span> <span class='n'>works</span> <span class='k'>=</span> <span class='nc'>Driver</span><span class='o'>(()</span> <span class='k'>=&gt;</span> <span class='k'>new</span> <span class='nc'>GradLife</span><span class='o'>)</span> <span class='o'>{</span><span class='n'>c</span> <span class='k'>=&gt;</span> <span class='k'>new</span> <span class='nc'>GradLifeSim</span><span class='o'>(</span><span class='n'>c</span><span class='o'>)}</span>
-<span class='n'>assert</span><span class='o'>(</span><span class='n'>works</span><span class='o'>)</span> <span class='c1'>// Scala 代码：如果 works == false，这里会抛出异常</span>
-<span class='n'>println</span><span class='o'>(</span><span class='s'>&quot;SUCCESS!!&quot;</span><span class='o'>)</span> <span class='c1'>// Scala 代码：到这里测试就通过了</span>
-</pre></div>
-
-    </div>
-</div>
-</div>
-
-</div>
-<div class='cell border-box-sizing text_cell rendered'><div class='prompt input_prompt'>
-</div><div class='inner_cell'>
-<div class='text_cell_render border-box-sizing rendered_html'>
-<div id='container'><section id='accordion'><div>
-<input type='checkbox' id='check-5' />
-<label for='check-5'><strong>答案</strong></label>
-<article>
-<pre style='background-color:#f7f7f7'>
-  when (io.state === idle) {
-    when      (io.coffee) { io.nextState := coding } 
-    .elsewhen (io.idea) { io.nextState := idle }
-    .elsewhen (io.pressure) { io.nextState := writing }
-  } .elsewhen (io.state === coding) {
-    when      (io.coffee) { io.nextState := coding } 
-    .elsewhen (io.idea || io.pressure) { io.nextState := writing }
-  } .elsewhen (io.state === writing) {
-    when      (io.coffee || io.idea) { io.nextState := writing }
-    .elsewhen (io.pressure) { io.nextState := grad }
-  }
 </pre></article></div></section></div>
 </div>
 </div>
@@ -14178,19 +14412,10 @@ document.getElementById('ipynb').height=$("#ipynb").contents().find("#notebook")
     
 <nav id="article-nav">
   
-    <a href="/2019/07/03/基于PCI的系统地址映射/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">后面的文章</strong>
-      <div class="article-nav-title">
-        
-          x86/x64架构中的系统地址映射的初始化，第1部分：基于PCI的系统
-        
-      </div>
-    </a>
   
-  
-    <a href="/2019/06/25/Chisel-Bootcamp-第二章第二节/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2019/10/25/Chisel-Bootcamp-第三章第一节/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">前面的文章</strong>
-      <div class="article-nav-title">Chisel教程 2.2：组合逻辑</div>
+      <div class="article-nav-title">Chisel教程 3.1：生成器-参数</div>
     </a>
   
 </nav>
@@ -14498,7 +14723,7 @@ document.getElementById('ipynb').height=$("#ipynb").contents().find("#notebook")
 <script>
   
     var disqus_config = function () {
-      this.page.url = 'https://www.chiselchina.com/2019/07/01/Chisel-Bootcamp-第二章第三节/';
+      this.page.url = 'https://www.chiselchina.com/2019/10/31/第三章第二节：生成器-容器/';
     };
   
   (function() {  // DON'T EDIT BELOW THIS LINE
